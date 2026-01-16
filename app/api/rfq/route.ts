@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "RFQ <rfq@brdelectronic.com>",
-      to: ["info@brdconnector.com"],
+      to: ["3293958@qq.com"],
       replyTo: email,
       subject: `New RFQ Inquiry – ${product || "Website"}`,
       html: `
