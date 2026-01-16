@@ -49,14 +49,30 @@ export function RFQForm() {
 
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    // Submit via API (no mailto)
+const res = await fetch("/api/rfq", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    fullName: formData.name,
+    email: formData.email,
+    company: formData.company,
+    country: formData.country,
+    product: formData.product || "",
+    quantity: formData.quantity || "",
+    message: formData.message || "",
+  }),
+});
 
-    const mailtoLink = `mailto:info@brdconnector.com?subject=RFQ from ${formData.company}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0ACompany: ${formData.company}%0D%0ACountry: ${formData.country}%0D%0AProduct Interest: ${formData.product}%0D%0AQuantity: ${formData.quantity}%0D%0AMessage: ${formData.message}`
-    window.location.href = mailtoLink
+if (!res.ok) {
+  // 如果你有 toast / setError，就在这里处理
+  // setError("Submission failed. Please try again.");
+  setIsSubmitting(false);
+  return;
+}
 
-    setIsSubmitted(true)
-    setIsSubmitting(false)
+setIsSubmitted(true);
+setIsSubmitting(false);
   }
 
   if (isSubmitted) {
