@@ -13,7 +13,8 @@ export default function ProductQuoteForm({ product }: { product: string }) {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+    e.preventDefault()
+    e.stopPropagation()    
     setLoading(true);
     setStatus("idle");
 
