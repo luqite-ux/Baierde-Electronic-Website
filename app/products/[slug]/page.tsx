@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
-import { ProductQuoteForm } from "@/components/product-quote-form"
+import ProductQuoteForm from "@/components/product-quote-form" // 去掉大括号
 import { getProductBySlug, getProducts, getRelatedProducts } from "@/lib/data"
 import { Download, Mail, FileText, Package, Cog } from "lucide-react"
 import type { Metadata } from "next"
