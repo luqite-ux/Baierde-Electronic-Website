@@ -3,6 +3,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { getProducts } from "@/lib/data"
 import { Factory, Users, Clock, Wrench, FlaskConical, Download, ArrowRight, CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -25,7 +26,23 @@ export const metadata: Metadata = {
   },
 }
 
-export default function HomePage() {
+function getImgSrc(img: any): string {
+  if (!img) return "/placeholder.svg"
+  if (typeof img === "string") return img
+  if (typeof img === "object" && img.src) return img.src
+  return "/placeholder.svg"
+}
+
+function getImgAlt(img: any, fallback: string): string {
+  if (!img) return fallback
+  if (typeof img === "object" && img.alt) return img.alt
+  return fallback
+}
+
+export default async function HomePage() {
+  const products = await getProducts()
+  const featured = (products || []).slice(0, 8)
+
   const faqs = [
     {
       question: "What types of RF connectors do you manufacture?",
@@ -231,105 +248,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Product Categories */}
+      {/* Featured Products (from your Excel/JSON data) */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Our Product Range</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive RF connectivity solutions for telecommunications, automotive, medical, and industrial
-              applications
+              Featured items from our real product catalog. Click any product to view details and request a quote.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3 mb-12">
-            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
-              <CardContent className="p-6">
-                <div className="mb-4 overflow-hidden rounded-lg">
-                  <Image
-                    src="/rf-coaxial-connectors-sma-mmcx-mcx-variety.jpg"
-                    alt="RF Coaxial Connectors"
-                    width={400}
-                    height={300}
-                    className="rounded-lg w-full group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">RF Coaxial Connectors</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  SMA, MMCX, MCX, BNC, TNC, N-Type series. High-frequency performance up to 40GHz. Precision machined
-                  for reliability.
-                </p>
-                <Button
-                  asChild
-                  variant="default"
-                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground"
-                >
-                  <Link href="/products/connectors">
-                    Explore Connectors <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+          {featured.length === 0 ? (
+            <div className="p-6 border rounded-lg text-sm max-w-3xl mx-auto">
+              No products found. Please check <code>data/products.seed.with-images.json</code> and{" "}
+              <code>lib/data.ts</code>.
+            </div>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              {featured.map((p: any) => {
+                const img0 = p.images?.[0]
+                const src = getImgSrc(img0)
+                const alt = getImgAlt(img0, p.title || "Product")
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
-              <CardContent className="p-6">
-                <div className="mb-4 overflow-hidden rounded-lg">
-                  <Image
-                    src="/rf-adapters-inter-series-connectors-variety.jpg"
-                    alt="RF Adapters"
-                    width={400}
-                    height={300}
-                    className="rounded-lg w-full group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">RF Adapters</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Inter-series adapters, gender changers, specialty configurations. Seamless connectivity between
-                  different connector types.
-                </p>
-                <Button
-                  asChild
-                  variant="default"
-                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground"
-                >
-                  <Link href="/products/adapters">
-                    Explore Adapters <ArrowRight className="ml-2 h-4 w-4" />
+                return (
+                  <Link
+                    key={p._id || p.slug}
+                    href={`/products/${p.slug}`}
+                    className="border rounded-xl overflow-hidden hover:shadow-lg transition-shadow bg-background"
+                  >
+                    <div className="relative aspect-square bg-muted">
+                      <Image src={src} alt={alt} fill className="object-cover" />
+                    </div>
+                    <div className="p-4">
+                      <div className="font-semibold line-clamp-2">{p.title}</div>
+                      <div className="text-sm text-muted-foreground line-clamp-2 mt-1">
+                        {p.shortDescription || ""}
+                      </div>
+                      {p.series ? <div className="text-xs text-muted-foreground mt-2">{p.series} Series</div> : null}
+                    </div>
                   </Link>
-                </Button>
-              </CardContent>
-            </Card>
+                )
+              })}
+            </div>
+          )}
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
-              <CardContent className="p-6">
-                <div className="mb-4 overflow-hidden rounded-lg">
-                  <Image
-                    src="/rf-cable-assemblies-coaxial-cables-with-connectors.jpg"
-                    alt="RF Cable Assemblies"
-                    width={400}
-                    height={300}
-                    className="rounded-lg w-full group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">RF Cable Assemblies</h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Custom cable assemblies with various connector types, lengths, cable specs. Tested and ready to
-                  install.
-                </p>
-                <Button
-                  asChild
-                  variant="default"
-                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground"
-                >
-                  <Link href="/products/cable-assemblies">
-                    Explore Cable Assemblies <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+          <div className="text-center mt-10">
+            <Button asChild size="lg" variant="outline">
+              <Link href="/products">Browse All Products</Link>
+            </Button>
           </div>
 
           {/* Popular Series Chips */}
-          <div className="text-center">
+          <div className="text-center mt-14">
             <h3 className="text-lg font-semibold mb-4">Popular Series</h3>
             <div className="flex flex-wrap gap-3 justify-center">
               <Badge

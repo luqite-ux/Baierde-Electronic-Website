@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { useState, useMemo } from "react"
-import { Breadcrumbs } from "@/components/breadcrumbs"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ProductFilters, type FilterState } from "@/components/product-filters"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import Link from "next/link"
-import Image from "next/image"
-import { mockProducts } from "@/lib/mock-data"
-import { ArrowUpDown, SlidersHorizontal } from "lucide-react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useState, useMemo } from "react";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ProductFilters, type FilterState } from "@/components/product-filters";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import Link from "next/link";
+import Image from "next/image";
+import { getProducts } from "@/lib/data"; // 动态获取真实产品数据
+import { ArrowUpDown, SlidersHorizontal } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function AdaptersPage() {
   const [filters, setFilters] = useState<FilterState>({
@@ -18,18 +18,19 @@ export default function AdaptersPage() {
     mounting: [],
     frequency: [],
     impedance: [],
-  })
-  const [sortBy, setSortBy] = useState("popularity")
+  });
+  const [sortBy, setSortBy] = useState("popularity");
 
+  // 动态获取产品数据
   const adapters = useMemo(() => {
-    let filtered = mockProducts.filter((p) => p.category === "adapters")
+    let filtered = getProducts().filter((p) => p.category === "adapters");
 
     if (sortBy === "newest") {
-      filtered = [...filtered].reverse()
+      filtered = [...filtered].reverse();
     }
 
-    return filtered
-  }, [filters, sortBy])
+    return filtered;
+  }, [filters, sortBy]);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -102,33 +103,36 @@ export default function AdaptersPage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {adapters.map((product) => (
-              <Link key={product._id} href={`/products/${product.slug}`}>
-                <Card className="h-full hover:shadow-lg transition-shadow">
-                  <CardContent className="p-4">
-                    <Image
-                      src={product.images[0] || "/placeholder.svg?height=300&width=300&query=RF+adapter"}
-                      alt={product.title}
-                      width={300}
-                      height={300}
-                      className="rounded-lg mb-3 w-full aspect-square object-cover"
-                    />
-                    <h3 className="font-semibold mb-2 line-clamp-2">{product.title}</h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {product.specs.slice(0, 2).map((spec) => (
-                        <span key={spec.label} className="text-xs bg-muted px-2 py-1 rounded">
-                          {spec.value}
-                        </span>
-                      ))}
-                    </div>
-                    <Button variant="outline" size="sm" className="w-full bg-transparent">
-                      Request Quote
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+            {adapters.map((product) => {
+              const imageSrc = product.images?.[0]?.src || "/placeholder.svg?height=300&width=300&query=RF+adapter";
+              return (
+                <Link key={product._id} href={`/products/${product.slug}`}>
+                  <Card className="h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-4">
+                      <Image
+                        src={imageSrc}
+                        alt={product.title}
+                        width={300}
+                        height={300}
+                        className="rounded-lg mb-3 w-full aspect-square object-cover"
+                      />
+                      <h3 className="font-semibold mb-2 line-clamp-2">{product.title}</h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {product.specs.slice(0, 2).map((spec) => (
+                          <span key={spec.label} className="text-xs bg-muted px-2 py-1 rounded">
+                            {spec.value}
+                          </span>
+                        ))}
+                      </div>
+                      <Button variant="outline" size="sm" className="w-full bg-transparent">
+                        Request Quote
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
 
           <div className="mt-12 bg-muted/30 p-8 rounded-lg">
@@ -167,5 +171,5 @@ export default function AdaptersPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

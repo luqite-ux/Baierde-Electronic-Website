@@ -1,0 +1,20 @@
+import { products } from "@/data/products"
+
+export async function getProducts() {
+  return products
+}
+
+export async function getProductBySlug(slug: string) {
+  return products.find((p) => p.slug === slug)
+}
+
+export async function getRelatedProducts(currentId: string, series?: string, category?: string) {
+  return products
+    .filter(
+      (p) =>
+        p._id !== currentId &&
+        (series ? p.series === series : true) &&
+        (category ? p.category === category : true)
+    )
+    .slice(0, 4)
+}
