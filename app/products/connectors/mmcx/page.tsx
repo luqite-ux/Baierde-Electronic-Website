@@ -137,7 +137,7 @@ export default async function MMCXSeriesPage() {
         <h2 className="text-2xl font-bold mb-6">MMCX Connector Products</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {mmcxProducts.map((product) => (
-            <Link key={product._id} href={`/products/${product.slug}`}>
+            <Link key={product._id} href={`/products/detail/${product.slug}`}>
               <Card className="h-full hover:shadow-lg transition-shadow">
                 <CardContent className="p-4">
                   <Image

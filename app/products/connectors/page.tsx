@@ -1,42 +1,41 @@
-"use client"
-
-import { useState, useMemo } from "react"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ProductFilters, type FilterState } from "@/components/product-filters"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
 import Image from "next/image"
-import { mockProducts } from "@/lib/mock-data"
 import { ArrowUpDown, SlidersHorizontal } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { getConnectorProducts, getSeriesByCategory, type ConnectorProductFilters } from "@/lib/sanity.data"
+import { ConnectorFilters } from "./connector-filters"
+import { ConnectorSortSelect } from "./connector-sort-select"
 
-export default function ConnectorsPage() {
-  const [filters, setFilters] = useState<FilterState>({
-    series: [],
-    mounting: [],
-    frequency: [],
-    impedance: [],
-  })
-  const [sortBy, setSortBy] = useState("popularity")
+interface ConnectorsPageProps {
+  searchParams: Promise<Record<string, string | string[] | undefined>>
+}
 
-  // Filter products
-  const connectors = useMemo(() => {
-    let filtered = mockProducts.filter((p) => p.category === "connectors")
+export default async function ConnectorsPage({ searchParams }: ConnectorsPageProps) {
+  // Await searchParams in Next.js 15
+  const sp = await searchParams
+  
+  // Parse filters from searchParams
+  const filters: ConnectorProductFilters = {
+    series: sp.series ? (Array.isArray(sp.series) ? sp.series : [sp.series]) : undefined,
+    mounting: sp.mounting ? (Array.isArray(sp.mounting) ? sp.mounting : [sp.mounting]) : undefined,
+    frequency: sp.frequency ? (Array.isArray(sp.frequency) ? sp.frequency : [sp.frequency]) : undefined,
+    impedance: sp.impedance ? (Array.isArray(sp.impedance) ? sp.impedance : [sp.impedance]) : undefined,
+  }
 
-    // Apply filters
-    if (filters.series.length > 0) {
-      filtered = filtered.filter((p) => p.series && filters.series.includes(p.series))
-    }
+  const sortBy = (sp.sort as string | undefined) || "popularity"
 
-    // Sort
-    if (sortBy === "newest") {
-      filtered = [...filtered].reverse()
-    }
+  // Fetch data
+  const connectors = await getConnectorProducts(filters)
+  const seriesList = await getSeriesByCategory("connectors")
 
-    return filtered
-  }, [filters, sortBy])
+  // Sort products (already sorted by sortOrder, title in query, but handle "newest" if needed)
+  let sortedConnectors = [...connectors]
+  if (sortBy === "newest") {
+    sortedConnectors = sortedConnectors.reverse()
+  }
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -66,14 +65,8 @@ export default function ConnectorsPage() {
 
       {/* Series Quick Links */}
       <div className="grid gap-3 md:grid-cols-5 mb-8">
-        {[
-          { name: "SMA", href: "/products/connectors/sma" },
-          { name: "MMCX", href: "/products/connectors/mmcx" },
-          { name: "MCX", href: "/products/connectors/mcx" },
-          { name: "BNC", href: "/products/connectors/bnc" },
-          { name: "SMP", href: "/products/connectors/smp" },
-        ].map((series) => (
-          <Link key={series.name} href={series.href}>
+        {seriesList.slice(0, 5).map((series) => (
+          <Link key={series._id} href={series.slug ? `/products/connectors/${series.slug}` : "#"}>
             <Button variant="outline" className="w-full bg-transparent">
               {series.name} Series
             </Button>
@@ -86,7 +79,7 @@ export default function ConnectorsPage() {
         <aside className="hidden lg:block w-64 flex-shrink-0">
           <Card>
             <CardContent className="p-6">
-              <ProductFilters onFilterChange={setFilters} />
+              <ConnectorFilters />
             </CardContent>
           </Card>
         </aside>
@@ -97,7 +90,7 @@ export default function ConnectorsPage() {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
               <p className="text-sm text-muted-foreground">
-                {connectors.length} {connectors.length === 1 ? "product" : "products"}
+                {sortedConnectors.length} {sortedConnectors.length === 1 ? "product" : "products"}
               </p>
               {/* Mobile Filter Button */}
               <Sheet>
@@ -109,7 +102,7 @@ export default function ConnectorsPage() {
                 </SheetTrigger>
                 <SheetContent side="left" className="w-80">
                   <div className="mt-6">
-                    <ProductFilters onFilterChange={setFilters} />
+                    <ConnectorFilters />
                   </div>
                 </SheetContent>
               </Sheet>
@@ -117,41 +110,42 @@ export default function ConnectorsPage() {
 
             <div className="flex items-center gap-2">
               <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
-              <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-[150px]">
-                  <SelectValue placeholder="Sort by" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="popularity">Most Popular</SelectItem>
-                  <SelectItem value="newest">Newest First</SelectItem>
-                </SelectContent>
-              </Select>
+              <ConnectorSortSelect defaultValue={sortBy} />
             </div>
           </div>
 
           {/* Product Grid */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {connectors.map((product) => (
-              <Link key={product._id} href={`/products/${product.slug}`}>
+            {sortedConnectors.map((product) => (
+              <Link key={product._id} href={product.slug ? `/products/connectors/${product.slug}` : "#"}>
                 <Card className="h-full hover:shadow-lg transition-shadow">
                   <CardContent className="p-4">
                     <Image
-                      src={product.images[0] || "/placeholder.svg?height=300&width=300&query=RF+connector"}
+                      src={product.imageUrl || "/placeholder.svg?height=300&width=300&query=RF+connector"}
                       alt={product.title}
                       width={300}
                       height={300}
                       className="rounded-lg mb-3 w-full aspect-square object-cover"
                     />
-                    <div className="text-xs text-primary font-semibold mb-1">{product.series} Series</div>
+                    {product.seriesName && (
+                      <div className="text-xs text-primary font-semibold mb-1">{product.seriesName} Series</div>
+                    )}
                     <h3 className="font-semibold mb-2 line-clamp-2">{product.title}</h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
+                    {product.shortDescription && (
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
+                    )}
                     {/* Key specs chips */}
                     <div className="flex flex-wrap gap-1 mb-3">
-                      {product.specs.slice(0, 2).map((spec) => (
-                        <span key={spec.label} className="text-xs bg-muted px-2 py-1 rounded">
-                          {spec.value}
+                      {product.frequencyMax && (
+                        <span className="text-xs bg-muted px-2 py-1 rounded">
+                          DC-{product.frequencyMax}GHz
                         </span>
-                      ))}
+                      )}
+                      {product.impedance && (
+                        <span className="text-xs bg-muted px-2 py-1 rounded">
+                          {product.impedance}Ω
+                        </span>
+                      )}
                     </div>
                     <Button variant="outline" size="sm" className="w-full bg-transparent">
                       Request Quote

@@ -3,9 +3,9 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { getProducts } from "@/lib/data"
 import { Factory, Users, Clock, Wrench, FlaskConical, Download, ArrowRight, CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
+import { getCategories, getCatalogFile } from "@/lib/sanity.data"
 
 export const metadata: Metadata = {
   title: "RF Coaxial Connectors & Cable Assemblies Manufacturer | IEC Certified | Baierde Electronic",
@@ -26,22 +26,13 @@ export const metadata: Metadata = {
   },
 }
 
-function getImgSrc(img: any): string {
-  if (!img) return "/placeholder.svg"
-  if (typeof img === "string") return img
-  if (typeof img === "object" && img.src) return img.src
-  return "/placeholder.svg"
-}
-
-function getImgAlt(img: any, fallback: string): string {
-  if (!img) return fallback
-  if (typeof img === "object" && img.alt) return img.alt
-  return fallback
-}
+// 开发环境刷新即可看到 Sanity 变化；生产可改为 60 或 300 降低后台更新频率
+export const revalidate = 0
 
 export default async function HomePage() {
-  const products = await getProducts()
-  const featured = (products || []).slice(0, 8)
+  // 分类卡片图片、标题、描述来自 Sanity category（Card Image = image 字段）
+  const categories = await getCategories()
+  const catalog = await getCatalogFile()
 
   const faqs = [
     {
@@ -156,12 +147,24 @@ export default async function HomePage() {
                 <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                   <Link href="/contact">Request a Quote</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link href="/contact">
+                {catalog.fileUrl ? (
+                  <Button asChild size="lg" variant="outline">
+                    <a
+                      href={catalog.fileUrl}
+                      download={catalog.fileName ?? "catalog"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Catalog
+                    </a>
+                  </Button>
+                ) : (
+                  <Button size="lg" variant="outline" disabled>
                     <Download className="mr-2 h-5 w-5" />
-                    Download Catalog
-                  </Link>
-                </Button>
+                    Catalog not available yet.
+                  </Button>
+                )}
               </div>
 
               {/* Quick Value Props with Icons */}
@@ -214,9 +217,9 @@ export default async function HomePage() {
             <div className="relative">
               <Image
                 src="/images/e5-85-ac-e5-8f-b8-e5-a4-a7-e9-97-a8.jpg"
-                alt="Precision RF Connector Manufacturing Facility - Baierde Electronic"
+                alt="Baierde Electronic Manufacturing Facility"
                 width={600}
-                height={600}
+                height={500}
                 className="rounded-lg shadow-xl"
               />
             </div>
@@ -248,58 +251,66 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Featured Products (from your Excel/JSON data) */}
+      {/* Product Categories */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">Our Product Range</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Featured items from our real product catalog. Click any product to view details and request a quote.
+              Comprehensive RF connectivity solutions for telecommunications, automotive, medical, and industrial
+              applications
             </p>
           </div>
 
-          {featured.length === 0 ? (
-            <div className="p-6 border rounded-lg text-sm max-w-3xl mx-auto">
-              No products found. Please check <code>data/products.seed.with-images.json</code> and{" "}
-              <code>lib/data.ts</code>.
-            </div>
-          ) : (
-            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              {featured.map((p: any) => {
-                const img0 = p.images?.[0]
-                const src = getImgSrc(img0)
-                const alt = getImgAlt(img0, p.title || "Product")
+          {/* 分类卡片图片来自 Sanity category.image (Card Image)；标题、描述、链接亦来自 Sanity */}
+          <div className="grid gap-8 md:grid-cols-3 mb-12">
+            {categories.map((category) => {
+              const href = category.slug ? `/products/${category.slug}` : "#"
+              const imageUrl =
+                category.imageUrl && category.imageUrl.trim() !== "" ? category.imageUrl : "/placeholder.svg"
+              const exploreText: Record<string, string> = {
+                connectors: "Explore Connectors",
+                adapters: "Explore Adapters",
+                "cable-assemblies": "Explore Cable Assemblies",
+              }
+              const buttonLabel = exploreText[category.slug || ""] ?? `Explore ${category.title.replace(/^RF\s+/i, "")}`
 
-                return (
-                  <Link
-                    key={p._id || p.slug}
-                    href={`/products/${p.slug}`}
-                    className="border rounded-xl overflow-hidden hover:shadow-lg transition-shadow bg-background"
-                  >
-                    <div className="relative aspect-square bg-muted">
-                      <Image src={src} alt={alt} fill className="object-cover" />
+              return (
+                <Card
+                  key={category._id}
+                  className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50"
+                >
+                  <CardContent className="p-6">
+                    <div className="mb-4 overflow-hidden rounded-lg">
+                      <Image
+                        src={imageUrl}
+                        alt={category.title}
+                        width={400}
+                        height={300}
+                        className="rounded-lg w-full group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
-                    <div className="p-4">
-                      <div className="font-semibold line-clamp-2">{p.title}</div>
-                      <div className="text-sm text-muted-foreground line-clamp-2 mt-1">
-                        {p.shortDescription || ""}
-                      </div>
-                      {p.series ? <div className="text-xs text-muted-foreground mt-2">{p.series} Series</div> : null}
-                    </div>
-                  </Link>
-                )
-              })}
-            </div>
-          )}
-
-          <div className="text-center mt-10">
-            <Button asChild size="lg" variant="outline">
-              <Link href="/products">Browse All Products</Link>
-            </Button>
+                    <h3 className="text-xl font-semibold mb-3">{category.title}</h3>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {category.description || ""}
+                    </p>
+                    <Button
+                      asChild
+                      variant="default"
+                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground"
+                    >
+                      <Link href={href}>
+                        {buttonLabel} <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
 
           {/* Popular Series Chips */}
-          <div className="text-center mt-14">
+          <div className="text-center">
             <h3 className="text-lg font-semibold mb-4">Popular Series</h3>
             <div className="flex flex-wrap gap-3 justify-center">
               <Badge
@@ -476,13 +487,20 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative grid grid-cols-1 gap-4">
               <Image
-                src="/cnc-machining-precision-manufacturing-rf-connector.jpg"
-                alt="CNC Precision Manufacturing Facility"
+                src="/images/production-workshop.jpg"
+                alt="Baierde Electronic CNC Production Workshop with BST-N20 Machines"
                 width={600}
-                height={500}
-                className="rounded-lg shadow-xl"
+                height={300}
+                className="rounded-lg shadow-xl w-full object-cover"
+              />
+              <Image
+                src="/images/factory-lab.jpg"
+                alt="Baierde Electronic Quality Control Laboratory with Testing Equipment"
+                width={600}
+                height={300}
+                className="rounded-lg shadow-xl w-full object-cover"
               />
             </div>
           </div>

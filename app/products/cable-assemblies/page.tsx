@@ -107,7 +107,7 @@ export default function CableAssembliesPage() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-12">
             {cables.map((product) => (
-              <Link key={product._id} href={`/products/${product.slug}`}>
+              <Link key={product._id} href={`/products/detail/${product.slug}`}>
                 <Card className="h-full hover:shadow-lg transition-shadow">
                   <CardContent className="p-4">
                     <Image

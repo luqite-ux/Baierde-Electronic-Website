@@ -24,6 +24,8 @@ export function RFQForm() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
+  const [attachmentFileName, setAttachmentFileName] = useState<string>("")
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -44,36 +46,39 @@ export function RFQForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    e.stopPropagation()
 
     if (!validateForm()) return
 
     setIsSubmitting(true)
+    setSubmitError(null)
 
-    // Submit via API (no mailto)
-const res = await fetch("/api/rfq", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    fullName: formData.name,
-    email: formData.email,
-    company: formData.company,
-    country: formData.country,
-    product: formData.product || "",
-    quantity: formData.quantity || "",
-    message: formData.message || "",
-  }),
-});
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          country: formData.country,
+          product: formData.product,
+          quantity: formData.quantity,
+          message: formData.message,
+          ...(attachmentFileName ? { attachmentFileName } : {}),
+        }),
+      })
+      const data = (await res.json()) as { ok?: boolean; error?: string }
 
-if (!res.ok) {
-  // 如果你有 toast / setError，就在这里处理
-  // setError("Submission failed. Please try again.");
-  setIsSubmitting(false);
-  return;
-}
-
-setIsSubmitted(true);
-setIsSubmitting(false);
+      if (!res.ok || !data.ok) {
+        setSubmitError(data.error || "Failed to send. Please try again.")
+        return
+      }
+      setIsSubmitted(true)
+    } catch {
+      setSubmitError("Network error. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (isSubmitted) {
@@ -81,9 +86,9 @@ setIsSubmitting(false);
       <Alert className="border-primary bg-primary/5">
         <CheckCircle className="h-5 w-5 text-primary" />
         <AlertDescription className="ml-2">
-          <div className="font-semibold mb-1">Thank you for your inquiry!</div>
+          <div className="font-semibold mb-1">Your inquiry has been sent successfully.</div>
           <p className="text-sm text-muted-foreground">
-            We've received your request and will respond within 24 hours. A copy has been sent to your email.
+            We will respond within 24 hours.
           </p>
         </AlertDescription>
       </Alert>
@@ -199,7 +204,12 @@ setIsSubmitting(false);
       <div className="space-y-2">
         <Label htmlFor="file">Attach File (Optional)</Label>
         <div className="flex items-center gap-2">
-          <Input id="file" type="file" className="hidden" />
+          <Input
+            id="file"
+            type="file"
+            className="hidden"
+            onChange={(e) => setAttachmentFileName(e.target.files?.[0]?.name ?? "")}
+          />
           <Button type="button" variant="outline" onClick={() => document.getElementById("file")?.click()}>
             <Upload className="mr-2 h-4 w-4" />
             Upload File
@@ -207,6 +217,12 @@ setIsSubmitting(false);
           <span className="text-sm text-muted-foreground">Max 10MB</span>
         </div>
       </div>
+
+      {submitError && (
+        <Alert variant="destructive">
+          <AlertDescription>{submitError}</AlertDescription>
+        </Alert>
+      )}
 
       <Button
         type="submit"
