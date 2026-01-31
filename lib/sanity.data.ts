@@ -203,6 +203,25 @@ export async function getConnectorProducts(
   return sanityClient.fetch<ConnectorProduct[]>(query, params)
 }
 
+/** ---------- Products by Category (cable-assemblies / adapters 等) ---------- */
+export async function getProductsByCategory(categorySlug: string): Promise<ConnectorProduct[]> {
+  const query = `
+    *[_type == "product" && series->category->slug.current == $categorySlug] | order(sortOrder asc, title asc) {
+      _id,
+      title,
+      "slug": slug.current,
+      "seriesName": series->name,
+      "imageUrl": mainImage.asset->url,
+      shortDescription,
+      frequencyMax,
+      impedance,
+      mountingType,
+      sortOrder
+    }
+  `
+  return sanityClient.fetch<ConnectorProduct[]>(query, { categorySlug })
+}
+
 /** ---------- Series by Category ---------- */
 export type SeriesByCategory = {
   _id: string

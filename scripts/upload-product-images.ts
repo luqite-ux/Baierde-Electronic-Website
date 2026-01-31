@@ -1,8 +1,8 @@
 /**
- * 根据 Excel 的 image_main 列，批量上传图片到 Sanity 并 patch 到对应 product。
- * 不导入/创建 product，只做：上传 asset + patch product 绑定主图。
+ * 根据 Excel 的「主图」列，批量上传图片到 Sanity 并 patch 到对应 product。
+ * 不导入/创建 product，只做：上传 asset + patch product 绑定 mainImage。
  *
- * 数据：data/product.xlsx（列含 slug/name、image_main），图片目录 data/images/
+ * 数据：data/product.xlsx（列含 slug/slugs/name/names、image_main/image/主图 等），图片目录 data/images/
  * 运行：pnpm upload-images
  * 环境变量：SANITY_API_TOKEN 或 SANITY_WRITE_TOKEN（写入权限）
  */
@@ -73,7 +73,7 @@ type ProductDoc = {
   images?: Array<{ _type: string; asset?: { _ref?: string } }>
 }
 
-/** 查 product：用 Excel 原始 slug 值，不对 slug 做 toSlug */
+/** 查 product：slug 需与 import-products 的 current 一致（已 toSlug），先按 _id 再按 slug.current */
 async function findProduct(slug: string): Promise<ProductDoc | null> {
   const docId = `product-${slug}`
 
@@ -132,11 +132,11 @@ async function main() {
 
   for (let i = 0; i < rows.length; i++) {
     const row = rows[i]
-    const slugRaw = getStr(row, 'slug', 'Slug')
-    const name = getStr(row, 'name', 'Name', '产品名', 'model', 'Model')
-    // 查 product 用 Excel 原始 slug，无 slug 列时才用 toSlug(name)
-    const slug = slugRaw || toSlug(name)
-    const image_main = getStr(row, 'image_main', 'image main')
+    const slugRaw = getStr(row, 'slug', 'slugs', 'Slug')
+    const name = getStr(row, 'name', 'names', 'Name', '产品名', 'model', 'Model')
+    // 与 import-products 一致：用 toSlug(slugRaw) 或 toSlug(name)，才能匹配到 product-${current}
+    const slug = (slugRaw ? toSlug(slugRaw) : toSlug(name)) || 'product'
+    const image_main = getStr(row, 'image_main', 'image main', 'image', 'images', '主图', '主图文件名')
 
     if (!image_main) {
       failures.push({ slug, image_main: '(空)', reason: 'Excel 无 image_main' })

@@ -276,35 +276,32 @@ export default async function HomePage() {
               const buttonLabel = exploreText[category.slug || ""] ?? `Explore ${category.title.replace(/^RF\s+/i, "")}`
 
               return (
-                <Card
+                <Link
                   key={category._id}
-                  className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50"
+                  href={href}
+                  className="block h-full rounded-lg border-2 border-transparent transition-all duration-300 hover:shadow-xl hover:border-primary/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
-                  <CardContent className="p-6">
-                    <div className="mb-4 overflow-hidden rounded-lg">
-                      <Image
-                        src={imageUrl}
-                        alt={category.title}
-                        width={400}
-                        height={300}
-                        className="rounded-lg w-full group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-3">{category.title}</h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {category.description || ""}
-                    </p>
-                    <Button
-                      asChild
-                      variant="default"
-                      className="w-full group-hover:bg-primary group-hover:text-primary-foreground"
-                    >
-                      <Link href={href}>
-                        {buttonLabel} <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
+                  <Card className="group h-full cursor-pointer border-2 border-inherit bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/50">
+                    <CardContent className="p-6">
+                      <div className="mb-4 overflow-hidden rounded-lg">
+                        <Image
+                          src={imageUrl}
+                          alt={category.title}
+                          width={400}
+                          height={300}
+                          className="rounded-lg w-full group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <h3 className="text-xl font-semibold mb-3">{category.title}</h3>
+                      <p className="text-muted-foreground mb-6 leading-relaxed">
+                        {category.description || ""}
+                      </p>
+                      <span className="flex w-full items-center justify-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground group-hover:bg-primary/90">
+                        {buttonLabel} <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </CardContent>
+                  </Card>
+                </Link>
               )
             })}
           </div>

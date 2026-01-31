@@ -70,8 +70,8 @@ export default async function ProductsPage() {
             const buttonText = `View ${categoryName} →`
 
             return (
-              <Link key={category._id} href={href}>
-                <Card className="h-full hover:shadow-lg transition-shadow">
+              <Link key={category._id} href={href} className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                <Card className="h-full cursor-pointer hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <Image
                       src={imageUrl}
