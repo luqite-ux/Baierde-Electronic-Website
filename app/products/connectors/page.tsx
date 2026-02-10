@@ -6,7 +6,7 @@ import Image from "next/image"
 import { ArrowUpDown, SlidersHorizontal } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { getConnectorProducts, getSeriesByCategory, type ConnectorProductFilters } from "@/lib/sanity.data"
-import { getFrequencyLabelForSeries } from "@/lib/specs-fallback"
+import { getFrequencyAndImpedanceFromDetailSpecs } from "@/lib/specs-fallback"
 import { ConnectorFilters } from "./connector-filters"
 import { ConnectorSortSelect } from "./connector-sort-select"
 
@@ -140,22 +140,24 @@ export default async function ConnectorsPage({ searchParams }: ConnectorsPagePro
                     {product.shortDescription && (
                       <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
                     )}
-                    {/* Key specs chips：频率与阻抗来自 Sanity；仅在有意义时展示，不显示 0 */}
+                    {/* Key specs chips：与详情页规格一致，以详情为准（来自 getSpecsForSeries） */}
                     <div className="flex flex-wrap gap-1 mb-3">
-                      {(product.frequencyMax != null && product.frequencyMax > 0 ? (
-                        <span className="text-xs bg-muted px-2 py-1 rounded">
-                          DC-{product.frequencyMax}GHz
-                        </span>
-                      ) : getFrequencyLabelForSeries(product.seriesName ?? null, product.title ?? "") ? (
-                        <span className="text-xs bg-muted px-2 py-1 rounded">
-                          {getFrequencyLabelForSeries(product.seriesName ?? null, product.title ?? "")}
-                        </span>
-                      ) : null)}
-                      {product.impedance != null && product.impedance > 0 && (
-                        <span className="text-xs bg-muted px-2 py-1 rounded">
-                          {product.impedance}Ω
-                        </span>
-                      )}
+                      {(() => {
+                        const { frequency, impedance } = getFrequencyAndImpedanceFromDetailSpecs(
+                          product.seriesName ?? null,
+                          product.title ?? ""
+                        )
+                        return (
+                          <>
+                            {frequency && (
+                              <span className="text-xs bg-muted px-2 py-1 rounded">{frequency}</span>
+                            )}
+                            {impedance && (
+                              <span className="text-xs bg-muted px-2 py-1 rounded">{impedance}</span>
+                            )}
+                          </>
+                        )
+                      })()}
                     </div>
                     <Button variant="outline" size="sm" className="w-full bg-transparent">
                       Request Quote

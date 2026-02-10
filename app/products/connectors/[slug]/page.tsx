@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { getProductBySlug, getSeriesBySlug, getConnectorProducts } from "@/lib/sanity.data"
-import { getFrequencyLabelForSeries } from "@/lib/specs-fallback"
+import { getFrequencyAndImpedanceFromDetailSpecs } from "@/lib/specs-fallback"
 import type { Metadata } from "next"
 
 /** 将 YouTube / Vimeo 页面 URL 转为 iframe embed URL */
@@ -345,16 +345,22 @@ async function SeriesPageView({
                   <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
                 )}
                 <div className="flex flex-wrap gap-1 mb-3">
-                  {(product.frequencyMax != null && product.frequencyMax > 0 ? (
-                    <span className="text-xs bg-muted px-2 py-1 rounded">DC-{product.frequencyMax}GHz</span>
-                  ) : getFrequencyLabelForSeries(product.seriesName ?? null, product.title ?? "") ? (
-                    <span className="text-xs bg-muted px-2 py-1 rounded">
-                      {getFrequencyLabelForSeries(product.seriesName ?? null, product.title ?? "")}
-                    </span>
-                  ) : null)}
-                  {product.impedance != null && product.impedance > 0 && (
-                    <span className="text-xs bg-muted px-2 py-1 rounded">{product.impedance}Ω</span>
-                  )}
+                  {(() => {
+                    const { frequency, impedance } = getFrequencyAndImpedanceFromDetailSpecs(
+                      product.seriesName ?? null,
+                      product.title ?? ""
+                    )
+                    return (
+                      <>
+                        {frequency && (
+                          <span className="text-xs bg-muted px-2 py-1 rounded">{frequency}</span>
+                        )}
+                        {impedance && (
+                          <span className="text-xs bg-muted px-2 py-1 rounded">{impedance}</span>
+                        )}
+                      </>
+                    )
+                  })()}
                 </div>
                 <Button variant="outline" size="sm" className="w-full bg-transparent">
                   Request Quote

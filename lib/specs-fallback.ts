@@ -80,18 +80,15 @@ const ADAPTER_SPECS: SpecItem[] = [
   { label: "VSWR", value: "≤1.35" },
 ]
 
-/** 按系列返回用于展示的频率标签（如 "DC-4GHz"），Sanity 未填 frequencyMax 时在列表卡片用 */
-export function getFrequencyLabelForSeries(
+/** 从详情页使用的 getSpecsForSeries 中取出 Frequency / Impedance，列表卡片与详情以详情为准 */
+export function getFrequencyAndImpedanceFromDetailSpecs(
   seriesName: string | null,
   title: string
-): string {
-  const s = (seriesName ?? title ?? "").toUpperCase()
-  if (s.includes("SMA") || s.includes("SSMA")) return "DC-18GHz"
-  if (s.includes("SMB") || s.includes("SMC") || s.includes("SSMC") || s.includes("BNC")) return "DC-4GHz"
-  if (s.includes("MCX") || s.includes("MMCX")) return "DC-6GHz"
-  if (s.includes("SMP")) return "DC-40GHz"
-  if (s.includes("D4") || s.includes("N TYPE") || s.includes("N-TYPE")) return "DC-11GHz"
-  return ""
+): { frequency: string | null; impedance: string | null } {
+  const specs = getSpecsForSeries(seriesName, title)
+  const frequency = specs.find((i) => i.label === "Frequency")?.value ?? null
+  const impedance = specs.find((i) => i.label === "Impedance")?.value ?? null
+  return { frequency, impedance }
 }
 
 export function getSpecsForSeries(
