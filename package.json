@@ -12,7 +12,8 @@
     "upload-images": "tsx scripts/upload-product-images.ts",
     "cleanup-categories": "tsx scripts/cleanup-categories.ts",
     "move-cable-assembly": "tsx scripts/move-cable-assembly-to-category.ts",
-    "move-adapters": "tsx scripts/move-adapters-to-category.ts"
+    "move-adapters": "tsx scripts/move-adapters-to-category.ts",
+    "generate-favicons": "node scripts/generate-favicons.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -81,6 +82,7 @@
     "postcss": "^8.5",
     "tailwindcss": "^4.1.9",
     "tsx": "^4.19.2",
+    "sharp": "^0.33.5",
     "tw-animate-css": "1.3.3",
     "typescript": "^5"
   }

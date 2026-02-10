@@ -1,5 +1,15 @@
 // Mock data structure - ready to be replaced with Sanity CMS
 
+/** 产品视频（与 Sanity productVideo 一致，用于详情页展示） */
+export interface ProductVideo {
+  videoType?: 'upload' | 'youtube' | 'vimeo' | null
+  videoFileUrl?: string | null
+  videoUrl?: string | null
+  posterUrl?: string | null
+  title?: string | null
+  description?: string | null
+}
+
 export interface Product {
   _id: string
   title: string
@@ -14,6 +24,8 @@ export interface Product {
   applications?: string[]
   packagingInfo?: string
   datasheetUrl?: string
+  /** 来自 Sanity 的产品视频（本地上传 / YouTube / Vimeo） */
+  productVideo?: ProductVideo | null
   seo: {
     title: string
     description: string

@@ -10,6 +10,31 @@ import { ProductQuoteForm } from "@/components/product-quote-form"
 import { getProductBySlug, getProducts, getRelatedProducts } from "@/lib/data"
 import { Download, Mail, FileText, Package, Cog } from "lucide-react"
 import type { Metadata } from "next"
+import type { ProductVideo } from "@/lib/mock-data"
+
+/** 将 YouTube / Vimeo 页面 URL 转为 iframe embed URL */
+function getEmbedUrl(
+  videoUrl: string | null | undefined,
+  videoType: string | null | undefined
+): string | null {
+  if (!videoUrl || !videoType) return null
+  if (videoType === "youtube") {
+    const m = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/\s]+)/)
+    return m ? `https://www.youtube.com/embed/${m[1]}` : null
+  }
+  if (videoType === "vimeo") {
+    const m = videoUrl.match(/vimeo\.com\/(?:video\/)?(\d+)/)
+    return m ? `https://player.vimeo.com/video/${m[1]}` : null
+  }
+  return null
+}
+
+function hasProductVideo(pv: ProductVideo | null | undefined): boolean {
+  if (!pv?.videoType) return false
+  if (pv.videoType === "upload") return !!(pv.videoFileUrl?.trim())
+  if (pv.videoType === "youtube" || pv.videoType === "vimeo") return !!(pv.videoUrl?.trim())
+  return false
+}
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>
@@ -158,6 +183,38 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 ))}
               </div>
             )}
+            {/* 产品视频（Sanity 后台本地上传 / YouTube / Vimeo） */}
+            {hasProductVideo(product.productVideo) && product.productVideo!.videoType === "upload" && product.productVideo!.videoFileUrl && (
+              <div className="rounded-lg overflow-hidden border border-border bg-muted shadow-sm">
+                <video
+                  controls
+                  preload="metadata"
+                  poster={product.productVideo!.posterUrl ?? undefined}
+                  className="w-full aspect-video object-contain"
+                >
+                  <source src={product.productVideo!.videoFileUrl} type="video/mp4" />
+                  <source src={product.productVideo!.videoFileUrl} type="video/webm" />
+                </video>
+              </div>
+            )}
+            {hasProductVideo(product.productVideo) &&
+              (product.productVideo!.videoType === "youtube" || product.productVideo!.videoType === "vimeo") &&
+              product.productVideo!.videoUrl &&
+              (() => {
+                const embed = getEmbedUrl(product.productVideo!.videoUrl, product.productVideo!.videoType)
+                if (!embed) return null
+                return (
+                  <div className="rounded-lg overflow-hidden border border-border bg-muted shadow-sm aspect-video">
+                    <iframe
+                      src={embed}
+                      title={product.productVideo!.title || product.title}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                )
+              })()}
           </div>
 
           {/* Product Info - Above Fold */}

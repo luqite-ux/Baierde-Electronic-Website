@@ -1,6 +1,7 @@
 // Data fetching functions - currently using mock data, ready for Sanity integration
 
 import { mockProducts, mockBlogPosts, type Product, type BlogPost } from "./mock-data"
+import { getProductBySlug as getSanityProductBySlug } from "./sanity.data"
 
 export async function getProducts(): Promise<Product[]> {
   // TODO: Replace with Sanity query
@@ -9,9 +10,18 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | undefined> {
-  // TODO: Replace with Sanity query
-  // const product = await client.fetch('*[_type == "product" && slug.current == $slug][0]', { slug });
-  return mockProducts.find((p) => p.slug === slug)
+  const mock = mockProducts.find((p) => p.slug === slug)
+  if (!mock) return undefined
+  // 从 Sanity 拉取产品视频，合并到 mock 数据，便于详情页展示
+  try {
+    const sanityProduct = await getSanityProductBySlug(slug)
+    if (sanityProduct?.productVideo) {
+      return { ...mock, productVideo: sanityProduct.productVideo }
+    }
+  } catch {
+    // 忽略 Sanity 请求失败，仅使用 mock
+  }
+  return mock
 }
 
 export async function getProductsByCategory(category: string): Promise<Product[]> {
