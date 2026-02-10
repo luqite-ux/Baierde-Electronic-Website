@@ -14,6 +14,8 @@
     "move-cable-assembly": "tsx scripts/move-cable-assembly-to-category.ts",
     "move-adapters": "tsx scripts/move-adapters-to-category.ts",
     "sync-specs-to-sanity": "tsx scripts/sync-specs-to-sanity.ts",
+    "list-duplicate-series": "tsx scripts/list-duplicate-series.ts",
+    "delete-empty-series": "tsx scripts/delete-empty-series.ts",
     "generate-favicons": "node scripts/generate-favicons.mjs"
   },
   "dependencies": {

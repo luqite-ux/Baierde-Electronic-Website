@@ -80,6 +80,20 @@ const ADAPTER_SPECS: SpecItem[] = [
   { label: "VSWR", value: "≤1.35" },
 ]
 
+/** 按系列返回用于展示的频率标签（如 "DC-4GHz"），Sanity 未填 frequencyMax 时在列表卡片用 */
+export function getFrequencyLabelForSeries(
+  seriesName: string | null,
+  title: string
+): string {
+  const s = (seriesName ?? title ?? "").toUpperCase()
+  if (s.includes("SMA") || s.includes("SSMA")) return "DC-18GHz"
+  if (s.includes("SMB") || s.includes("SMC") || s.includes("SSMC") || s.includes("BNC")) return "DC-4GHz"
+  if (s.includes("MCX") || s.includes("MMCX")) return "DC-6GHz"
+  if (s.includes("SMP")) return "DC-40GHz"
+  if (s.includes("D4") || s.includes("N TYPE") || s.includes("N-TYPE")) return "DC-11GHz"
+  return ""
+}
+
 export function getSpecsForSeries(
   seriesName: string | null,
   title: string
