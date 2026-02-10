@@ -88,7 +88,7 @@ export default async function HomePage() {
             description:
               "Professional RF coaxial connector and cable assembly manufacturer since 2006. IEC certified quality, OEM/ODM services.",
             foundingDate: "2006",
-            email: "info@brdconnector.com",
+            email: "info@brdelectronic.com",
             address: {
               "@type": "PostalAddress",
               addressLocality: "Zhenjiang",

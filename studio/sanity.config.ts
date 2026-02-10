@@ -1,17 +1,20 @@
 import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
+import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
   title: '佰尔得',
+  basePath: '/studio',
 
   projectId: '746jvz7j',
   dataset: 'production',
 
   plugins: [
-    structureTool({
+    deskTool({
+      name: 'desk',
+      title: 'Content',
       structure: (S) =>
         S.list()
           .title('Content')

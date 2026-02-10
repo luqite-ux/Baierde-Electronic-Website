@@ -148,8 +148,8 @@ export default function ManufacturingPage() {
                       </CardContent>
                     </Card>
                   </div>
-                  <div className="hidden md:block w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg z-10 border-4 border-background">
-                    {index + 1}
+                  <div className="hidden md:flex w-12 h-12 shrink-0 rounded-full bg-primary items-center justify-center text-primary-foreground font-bold text-lg leading-none tabular-nums z-10 border-4 border-background">
+                    <span className="inline-flex items-center justify-center size-full">{index + 1}</span>
                   </div>
                   <div className="flex-1" />
                 </div>

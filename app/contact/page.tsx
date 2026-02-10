@@ -34,7 +34,7 @@ const organizationSchema = {
       "@type": "ContactPoint",
       telephone: "+86-181-3681-7958",
       contactType: "sales",
-      email: "info@brdconnector.com",
+      email: "info@brdelectronic.com",
       availableLanguage: ["English", "Chinese"],
     },
   ],
@@ -104,10 +104,10 @@ export default function ContactPage() {
                     <div>
                       <div className="font-medium mb-1">Email</div>
                       <a
-                        href="mailto:info@brdconnector.com"
+                        href="mailto:info@brdelectronic.com"
                         className="text-sm text-muted-foreground hover:text-primary transition-colors"
                       >
-                        info@brdconnector.com
+                        info@brdelectronic.com
                       </a>
                     </div>
                   </div>

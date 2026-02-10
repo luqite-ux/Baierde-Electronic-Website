@@ -31,6 +31,7 @@ export type ProductListItem = {
   slug?: string | null
   seriesName?: string | null
   imageUrl?: string | null
+  shortDescription?: string | null
   frequencyMax?: number | null
   impedance?: number | null
   mountingType?: string | null
@@ -53,6 +54,36 @@ const PRODUCTS_QUERY = `
 
 export async function getProducts(): Promise<ProductListItem[]> {
   return sanityClient.fetch(PRODUCTS_QUERY)
+}
+
+/** Search products by keyword (title match, case-insensitive). Returns same shape as ProductListItem. */
+const PRODUCTS_SEARCH_QUERY = `
+*[_type == "product" && (
+  lower(title) match lower($pattern) ||
+  (defined(shortDescription) && shortDescription != null && lower(shortDescription) match lower($pattern)) ||
+  (defined(series->name) && lower(series->name) match lower($pattern))
+)] | order(sortOrder asc, title asc) {
+  _id,
+  title,
+  "slug": slug.current,
+  shortDescription,
+  mountingType,
+  frequencyMax,
+  impedance,
+  tags,
+  "seriesName": series->name,
+  "imageUrl": mainImage.asset->url
+}
+`
+
+export async function getProductsBySearch(query: string): Promise<ProductListItem[]> {
+  const trimmed = (query || "").trim()
+  if (!trimmed) return []
+  // GROQ match uses * and ? as wildcards. Strip them so pattern is *term*.
+  const safe = trimmed.replace(/[*?]/g, "")
+  if (!safe) return []
+  const pattern = `*${safe}*`
+  return sanityClient.fetch<ProductListItem[]>(PRODUCTS_SEARCH_QUERY, { pattern })
 }
 
 /** ---------- Popular Series ---------- */
