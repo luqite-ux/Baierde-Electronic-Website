@@ -5,7 +5,8 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { getProductBySlug } from "@/lib/sanity.data"
+import { getProductBySlug, getSeriesBySlug, getConnectorProducts } from "@/lib/sanity.data"
+import { getFrequencyLabelForSeries } from "@/lib/specs-fallback"
 import type { Metadata } from "next"
 
 /** 将 YouTube / Vimeo 页面 URL 转为 iframe embed URL */
@@ -40,49 +41,65 @@ interface ProductDetailPageProps {
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
   const { slug } = await params
   const product = await getProductBySlug(slug)
-
-  if (!product) {
+  if (product) {
+    const url = `https://brdelectronic.com/products/connectors/${slug}`
     return {
-      title: "Product Not Found",
+      title: `${product.title} | RF Coaxial Connectors | Baierde`,
+      description: product.shortDescription || `High-quality ${product.title} RF coaxial connector from Baierde Electronic.`,
+      alternates: { canonical: url },
+      openGraph: {
+        title: `${product.title} | Baierde Electronic`,
+        description: product.shortDescription || `High-quality ${product.title} RF coaxial connector.`,
+        url: url,
+        siteName: "Baierde Electronic",
+        images: product.imageUrl ? [{ url: product.imageUrl, width: 1200, height: 630, alt: product.title }] : [],
+        locale: "en_US",
+        type: "website",
+      },
     }
   }
-
-  const url = `https://brdelectronic.com/products/connectors/${slug}`
-
-  return {
-    title: `${product.title} | RF Coaxial Connectors | Baierde`,
-    description: product.shortDescription || `High-quality ${product.title} RF coaxial connector from Baierde Electronic.`,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      title: `${product.title} | Baierde Electronic`,
-      description: product.shortDescription || `High-quality ${product.title} RF coaxial connector.`,
-      url: url,
-      siteName: "Baierde Electronic",
-      images: product.imageUrl
-        ? [
-            {
-              url: product.imageUrl,
-              width: 1200,
-              height: 630,
-              alt: product.title,
-            },
-          ]
-        : [],
-      locale: "en_US",
-      type: "website",
-    },
+  const series = await getSeriesBySlug("connectors", slug)
+  if (series) {
+    const url = `https://brdelectronic.com/products/connectors/${slug}`
+    const title = `${series.name} Connectors | RF Coaxial Connectors | Baierde`
+    return {
+      title,
+      description: `${series.name} series RF coaxial connectors. Professional-grade, IEC certified.`,
+      alternates: { canonical: url },
+      openGraph: {
+        title: `${series.name} Connectors | Baierde Electronic`,
+        description: `${series.name} series RF coaxial connectors.`,
+        url: url,
+        siteName: "Baierde Electronic",
+        locale: "en_US",
+        type: "website",
+      },
+    }
   }
+  return { title: "Not Found" }
 }
 
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const { slug } = await params
   const product = await getProductBySlug(slug)
-
-  if (!product) {
-    notFound()
+  if (product) {
+    return <ProductDetailView slug={slug} product={product} />
   }
+  const series = await getSeriesBySlug("connectors", slug)
+  if (series) {
+    return <SeriesPageView slug={slug} series={series} />
+  }
+  notFound()
+}
+
+/** 产品详情视图 */
+async function ProductDetailView({
+  slug,
+  product,
+}: {
+  slug: string
+  product: Awaited<ReturnType<typeof getProductBySlug>> & { title: string }
+}) {
 
   const breadcrumbItems = [
     { label: "Products", href: "/products" },
@@ -277,6 +294,83 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <Link href="/contact">Request Quote</Link>
           </Button>
         </div>
+      </div>
+    </div>
+  )
+}
+
+/** 系列页视图：slug 为系列 slug（如 d4）时展示该系列产品列表，避免 404 */
+async function SeriesPageView({
+  slug,
+  series,
+}: {
+  slug: string
+  series: { _id: string; name: string; slug: string | null }
+}) {
+  const products = await getConnectorProducts({ series: [series.name] })
+  const breadcrumbItems = [
+    { label: "Products", href: "/products" },
+    { label: "RF Coaxial Connectors", href: "/products/connectors" },
+    { label: `${series.name} Series` },
+  ]
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <Breadcrumbs items={breadcrumbItems} />
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-4">{series.name} Connector Series</h1>
+        <p className="text-lg text-muted-foreground max-w-3xl">
+          {series.name} series RF coaxial connectors. Professional-grade, IEC certified.
+        </p>
+      </div>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {products.map((product) => (
+          <Link
+            key={product._id}
+            href={product.slug ? `/products/connectors/${product.slug}` : "#"}
+          >
+            <Card className="h-full hover:shadow-lg transition-shadow">
+              <CardContent className="p-4">
+                <Image
+                  src={product.imageUrl || "/placeholder.svg?height=300&width=300&query=RF+connector"}
+                  alt={product.title}
+                  width={300}
+                  height={300}
+                  className="rounded-lg mb-3 w-full aspect-square object-cover"
+                />
+                {product.seriesName && (
+                  <div className="text-xs text-primary font-semibold mb-1">{product.seriesName} Series</div>
+                )}
+                <h3 className="font-semibold mb-2 line-clamp-2">{product.title}</h3>
+                {product.shortDescription && (
+                  <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
+                )}
+                <div className="flex flex-wrap gap-1 mb-3">
+                  {(product.frequencyMax != null && product.frequencyMax > 0 ? (
+                    <span className="text-xs bg-muted px-2 py-1 rounded">DC-{product.frequencyMax}GHz</span>
+                  ) : getFrequencyLabelForSeries(product.seriesName ?? null, product.title ?? "") ? (
+                    <span className="text-xs bg-muted px-2 py-1 rounded">
+                      {getFrequencyLabelForSeries(product.seriesName ?? null, product.title ?? "")}
+                    </span>
+                  ) : null)}
+                  {product.impedance != null && product.impedance > 0 && (
+                    <span className="text-xs bg-muted px-2 py-1 rounded">{product.impedance}Ω</span>
+                  )}
+                </div>
+                <Button variant="outline" size="sm" className="w-full bg-transparent">
+                  Request Quote
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
+      </div>
+      {products.length === 0 && (
+        <p className="text-muted-foreground">暂无 {series.name} 系列产品。</p>
+      )}
+      <div className="mt-8">
+        <Button variant="outline" asChild>
+          <Link href="/products/connectors">Back to RF Coaxial Connectors</Link>
+        </Button>
       </div>
     </div>
   )

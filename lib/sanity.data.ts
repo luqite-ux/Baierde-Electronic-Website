@@ -274,6 +274,21 @@ export async function getSeriesByCategory(categorySlug: string): Promise<SeriesB
   return sanityClient.fetch<SeriesByCategory[]>(query, { categorySlug })
 }
 
+/** 按分类 + slug 获取单个系列（用于 /products/connectors/[slug] 区分系列页与产品页） */
+export async function getSeriesBySlug(
+  categorySlug: string,
+  seriesSlug: string
+): Promise<SeriesByCategory | null> {
+  const query = `
+    *[_type == "series" && category->slug.current == $categorySlug && slug.current == $seriesSlug][0] {
+      _id,
+      name,
+      "slug": slug.current
+    }
+  `
+  return sanityClient.fetch<SeriesByCategory | null>(query, { categorySlug, seriesSlug })
+}
+
 /** ---------- Product Detail by Slug ---------- */
 /** 产品视频对象 productVideo：upload | youtube | vimeo，用于详情页播放器与 VideoObject JSON-LD。 */
 export type ProductVideo = {

@@ -6,6 +6,7 @@ import Image from "next/image"
 import { ArrowUpDown, SlidersHorizontal } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { getConnectorProducts, getSeriesByCategory, type ConnectorProductFilters } from "@/lib/sanity.data"
+import { getFrequencyLabelForSeries } from "@/lib/specs-fallback"
 import { ConnectorFilters } from "./connector-filters"
 import { ConnectorSortSelect } from "./connector-sort-select"
 
@@ -66,12 +67,12 @@ export default async function ConnectorsPage({ searchParams }: ConnectorsPagePro
         </p>
       </div>
 
-      {/* Series Quick Links */}
+      {/* Series Quick Links（来自 Sanity；避免 "BNC Series Series" 重复） */}
       <div className="grid gap-3 md:grid-cols-5 mb-8">
-        {seriesList.slice(0, 5).map((series) => (
+        {seriesList.slice(0, 10).map((series) => (
           <Link key={series._id} href={series.slug ? `/products/connectors/${series.slug}` : "#"}>
             <Button variant="outline" className="w-full bg-transparent">
-              {series.name} Series
+              {/Series$/i.test(series.name) ? series.name : `${series.name} Series`}
             </Button>
           </Link>
         ))}
@@ -131,20 +132,26 @@ export default async function ConnectorsPage({ searchParams }: ConnectorsPagePro
                       className="rounded-lg mb-3 w-full aspect-square object-cover"
                     />
                     {product.seriesName && (
-                      <div className="text-xs text-primary font-semibold mb-1">{product.seriesName} Series</div>
+                      <div className="text-xs text-primary font-semibold mb-1">
+                        {/Series$/i.test(product.seriesName) ? product.seriesName : `${product.seriesName} Series`}
+                      </div>
                     )}
                     <h3 className="font-semibold mb-2 line-clamp-2">{product.title}</h3>
                     {product.shortDescription && (
                       <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
                     )}
-                    {/* Key specs chips */}
+                    {/* Key specs chips：频率与阻抗来自 Sanity；仅在有意义时展示，不显示 0 */}
                     <div className="flex flex-wrap gap-1 mb-3">
-                      {product.frequencyMax && (
+                      {(product.frequencyMax != null && product.frequencyMax > 0 ? (
                         <span className="text-xs bg-muted px-2 py-1 rounded">
                           DC-{product.frequencyMax}GHz
                         </span>
-                      )}
-                      {product.impedance && (
+                      ) : getFrequencyLabelForSeries(product.seriesName ?? null, product.title ?? "") ? (
+                        <span className="text-xs bg-muted px-2 py-1 rounded">
+                          {getFrequencyLabelForSeries(product.seriesName ?? null, product.title ?? "")}
+                        </span>
+                      ) : null)}
+                      {product.impedance != null && product.impedance > 0 && (
                         <span className="text-xs bg-muted px-2 py-1 rounded">
                           {product.impedance}Ω
                         </span>
