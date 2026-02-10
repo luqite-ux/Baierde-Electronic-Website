@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+﻿/** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
@@ -12,10 +12,9 @@ const nextConfig = {
   async rewrites() {
     const studioOrigin = 'https://brdelectronic.sanity.studio'
     return [
-      { source: '/studio', destination: `${studioOrigin}/studio` },
-      { source: '/studio/:path*', destination: `${studioOrigin}/studio/:path*` },
+      { source: '/studio', destination: studioOrigin },
+      { source: '/studio/:path*', destination: `${studioOrigin}/:path*` },
     ]
   },
 }
-
 export default nextConfig
