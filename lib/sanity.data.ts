@@ -1,4 +1,5 @@
 import {sanityClient} from './sanity.client'
+import {getSpecsForSeries} from './specs-fallback'
 
 /** ---------- Categories ---------- */
 /** 分类卡片图片来自 Sanity category.image (Card Image)。 */
@@ -296,6 +297,8 @@ export type ProductDetail = {
   impedance?: number | null
   mountingType?: string | null
   tags?: string[] | null
+  /** 技术参数，来自 Sanity product.specs */
+  specs?: { label: string; value: string }[] | null
   productVideo?: ProductVideo | null
   /** ISO 日期，用于 VideoObject uploadDate */
   createdAt?: string | null
@@ -315,6 +318,7 @@ export async function getProductBySlug(slug: string): Promise<ProductDetail | nu
       impedance,
       mountingType,
       tags,
+      specs,
       "productVideo": {
         "videoType": productVideo.videoType,
         "videoFileUrl": productVideo.videoFile.asset->url,
@@ -328,7 +332,12 @@ export async function getProductBySlug(slug: string): Promise<ProductDetail | nu
     }
   `
   
-  return sanityClient.fetch<ProductDetail | null>(query, { slug })
+  const product = await sanityClient.fetch<ProductDetail | null>(query, { slug })
+  if (!product) return null
+  if (!product.specs?.length && (product.seriesName || product.title)) {
+    product.specs = getSpecsForSeries(product.seriesName ?? null, product.title ?? '')
+  }
+  return product
 }
 
 /** ---------- Catalog 产品目录下载文件 ---------- */

@@ -222,40 +222,51 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             )}
           </div>
 
-          {/* Key Specifications */}
+          {/* Key Specifications：优先展示 Sanity product.specs，否则展示 frequencyMax/impedance 等 */}
           <Card className="border-primary/20">
             <CardContent className="p-6">
               <h3 className="text-sm font-semibold mb-4 text-muted-foreground uppercase">Specifications</h3>
               <div className="space-y-3">
-                {product.frequencyMax && (
-                  <div className="flex justify-between items-center border-b border-border pb-2">
-                    <span className="text-sm font-medium">Frequency Range</span>
-                    <span className="text-sm text-muted-foreground">DC-{product.frequencyMax}GHz</span>
-                  </div>
-                )}
-                {product.impedance && (
-                  <div className="flex justify-between items-center border-b border-border pb-2">
-                    <span className="text-sm font-medium">Impedance</span>
-                    <span className="text-sm text-muted-foreground">{product.impedance}Ω</span>
-                  </div>
-                )}
-                {mountingDisplayName && (
-                  <div className="flex justify-between items-center border-b border-border pb-2">
-                    <span className="text-sm font-medium">Mounting Type</span>
-                    <span className="text-sm text-muted-foreground">{mountingDisplayName}</span>
-                  </div>
-                )}
-                {product.tags && product.tags.length > 0 && (
-                  <div className="flex justify-between items-center border-b border-border pb-2">
-                    <span className="text-sm font-medium">Tags</span>
-                    <div className="flex flex-wrap gap-1">
-                      {product.tags.map((tag, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
+                {product.specs && product.specs.length > 0 ? (
+                  product.specs.map((spec: { label: string; value: string }, index: number) => (
+                    <div key={index} className="flex justify-between items-center border-b border-border pb-2">
+                      <span className="text-sm font-medium">{spec.label}</span>
+                      <span className="text-sm text-muted-foreground">{spec.value}</span>
                     </div>
-                  </div>
+                  ))
+                ) : (
+                  <>
+                    {product.frequencyMax != null && product.frequencyMax > 0 && (
+                      <div className="flex justify-between items-center border-b border-border pb-2">
+                        <span className="text-sm font-medium">Frequency Range</span>
+                        <span className="text-sm text-muted-foreground">DC-{product.frequencyMax} GHz</span>
+                      </div>
+                    )}
+                    {product.impedance && (
+                      <div className="flex justify-between items-center border-b border-border pb-2">
+                        <span className="text-sm font-medium">Impedance</span>
+                        <span className="text-sm text-muted-foreground">{product.impedance}Ω</span>
+                      </div>
+                    )}
+                    {mountingDisplayName && (
+                      <div className="flex justify-between items-center border-b border-border pb-2">
+                        <span className="text-sm font-medium">Mounting Type</span>
+                        <span className="text-sm text-muted-foreground">{mountingDisplayName}</span>
+                      </div>
+                    )}
+                    {product.tags && product.tags.length > 0 && (
+                      <div className="flex justify-between items-center border-b border-border pb-2">
+                        <span className="text-sm font-medium">Tags</span>
+                        <div className="flex flex-wrap gap-1">
+                          {product.tags.map((tag: string, index: number) => (
+                            <Badge key={index} variant="outline" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             </CardContent>

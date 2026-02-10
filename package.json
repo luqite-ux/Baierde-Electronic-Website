@@ -13,6 +13,7 @@
     "cleanup-categories": "tsx scripts/cleanup-categories.ts",
     "move-cable-assembly": "tsx scripts/move-cable-assembly-to-category.ts",
     "move-adapters": "tsx scripts/move-adapters-to-category.ts",
+    "sync-specs-to-sanity": "tsx scripts/sync-specs-to-sanity.ts",
     "generate-favicons": "node scripts/generate-favicons.mjs"
   },
   "dependencies": {
@@ -79,10 +80,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "dotenv": "^16.4.5",
+    "pdf-parse": "^2.4.5",
     "postcss": "^8.5",
+    "sharp": "^0.33.5",
     "tailwindcss": "^4.1.9",
     "tsx": "^4.19.2",
-    "sharp": "^0.33.5",
     "tw-animate-css": "1.3.3",
     "typescript": "^5"
   }

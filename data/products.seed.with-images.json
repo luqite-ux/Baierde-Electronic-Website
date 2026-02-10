@@ -6,7 +6,24 @@
     "name": "SMA-J3 RF Coaxial Connector",
     "name_cn": "SMA-J3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -22,7 +39,24 @@
     "name": "SMA-JB3 RF Coaxial Connector",
     "name_cn": "SMA-JB3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -38,7 +72,24 @@
     "name": "SMA-JW-1 RF Coaxial Connector",
     "name_cn": "SMA-JW-1射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -54,7 +105,24 @@
     "name": "SMA-JW3 RF Coaxial Connector",
     "name_cn": "SMA-JW3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -70,7 +138,24 @@
     "name": "SMA-KE RF Coaxial Connector",
     "name_cn": "SMA-KE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -86,7 +171,24 @@
     "name": "SMA-KWE RF Coaxial Connector",
     "name_cn": "SMA-KWE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -102,7 +204,24 @@
     "name": "MCX-75JW3 RF Coaxial Connector",
     "name_cn": "MCX-75JW3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -118,7 +237,24 @@
     "name": "MCX-J-1 RF Coaxial Connector",
     "name_cn": "MCX-J-1射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -134,7 +270,24 @@
     "name": "MCX-J3 RF Coaxial Connector",
     "name_cn": "MCX-J3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -150,7 +303,24 @@
     "name": "MCX-JB2 RF Coaxial Connector",
     "name_cn": "MCX-JB2射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -166,7 +336,24 @@
     "name": "MCX-JE RF Coaxial Connector",
     "name_cn": "MCX-JE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -182,7 +369,24 @@
     "name": "MCX-JW-1 RF Coaxial Connector",
     "name_cn": "MCX-JW-1射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -198,7 +402,24 @@
     "name": "MCX-JW1.37 RF Coaxial Connector",
     "name_cn": "MCX-JW1.37射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -214,7 +435,24 @@
     "name": "MCX-JW3 RF Coaxial Connector",
     "name_cn": "MCX-JW3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -230,7 +468,24 @@
     "name": "MCX-JWB2 RF Coaxial Connector",
     "name_cn": "MCX-JWB2射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -246,7 +501,24 @@
     "name": "MCX-KE RF Coaxial Connector",
     "name_cn": "MCX-KE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -262,7 +534,24 @@
     "name": "MCX-KEF RF Coaxial Connector",
     "name_cn": "MCX-KEF射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -278,7 +567,24 @@
     "name": "MCX-KFB2 RF Coaxial Connector",
     "name_cn": "MCX-KFB2射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -294,7 +600,24 @@
     "name": "MCX-KWE RF Coaxial Connector",
     "name_cn": "MCX-KWE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -310,7 +633,24 @@
     "name": "MCX-KYD-2 RF Coaxial Connector",
     "name_cn": "MCX-KYD-2射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-36"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -326,7 +666,24 @@
     "name": "MMCX-J-1 RF Coaxial Connector",
     "name_cn": "MMCX-J-1射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -342,7 +699,24 @@
     "name": "MMCX-J3 RF Coaxial Connector",
     "name_cn": "MMCX-J3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -358,7 +732,24 @@
     "name": "MMCX-JB2 RF Coaxial Connector",
     "name_cn": "MMCX-JB2射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -374,7 +765,24 @@
     "name": "MMCX-JE RF Coaxial Connector",
     "name_cn": "MMCX-JE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -390,7 +798,24 @@
     "name": "MMCX-JEF RF Coaxial Connector",
     "name_cn": "MMCX-JEF射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -406,7 +831,24 @@
     "name": "MMCX-JW-1 RF Coaxial Connector",
     "name_cn": "MMCX-JW-1射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -422,7 +864,24 @@
     "name": "MMCX-JW3 RF Coaxial Connector",
     "name_cn": "MMCX-JW3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -438,7 +897,24 @@
     "name": "MMCX-JWB2 RF Coaxial Connector",
     "name_cn": "MMCX-JWB2射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -454,7 +930,24 @@
     "name": "MMCX-K3 RF Coaxial Connector",
     "name_cn": "MMCX-K3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -470,7 +963,24 @@
     "name": "MMCX-KE RF Coaxial Connector",
     "name_cn": "MMCX-KE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -486,7 +996,24 @@
     "name": "MMCX-KEF RF Coaxial Connector",
     "name_cn": "MMCX-KEF射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -502,7 +1029,24 @@
     "name": "MMCX-KW3 RF Coaxial Connector",
     "name_cn": "MMCX-KW3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -518,7 +1062,24 @@
     "name": "MMCX-KWE RF Coaxial Connector",
     "name_cn": "MMCX-KWE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–6 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-37"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -534,7 +1095,24 @@
     "name": "SMP-J3 RF Coaxial Connector",
     "name_cn": "SMP-J3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–40 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-49"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -550,7 +1128,24 @@
     "name": "SMP-JHD RF Coaxial Connector",
     "name_cn": "SMP-JHD射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–40 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-49"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -566,7 +1161,24 @@
     "name": "SMP-JYD13-1 RF Coaxial Connector",
     "name_cn": "SMP-JYD13-1射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–40 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-49"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -582,7 +1194,24 @@
     "name": "SMP-KB2 RF Coaxial Connector",
     "name_cn": "SMP-KB2射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–40 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-49"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -598,7 +1227,24 @@
     "name": "SMB-J3 RF Coaxial Connector",
     "name_cn": "SMB-J3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–4 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-10"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -614,7 +1260,24 @@
     "name": "SMB-JE RF Coaxial Connector",
     "name_cn": "SMB-JE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–4 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-10"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -630,7 +1293,24 @@
     "name": "SMB-KW3 RF Coaxial Connector",
     "name_cn": "SMB-KW3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–4 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-10"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -646,7 +1326,24 @@
     "name": "SMC-JW3 RF Coaxial Connector",
     "name_cn": "SMC-JW3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–10 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-13"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -662,7 +1359,24 @@
     "name": "SMC-K3 RF Coaxial Connector",
     "name_cn": "SMC-K3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–10 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-13"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -678,7 +1392,24 @@
     "name": "SSMA-J3 RF Coaxial Connector",
     "name_cn": "SSMA-J3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -694,7 +1425,24 @@
     "name": "SSMA-K3 RF Coaxial Connector",
     "name_cn": "SSMA-K3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -710,7 +1458,24 @@
     "name": "SSMA-KWE RF Coaxial Connector",
     "name_cn": "SSMA-KWE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–18 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-15"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -726,7 +1491,24 @@
     "name": "SSMC-JWE RF Coaxial Connector",
     "name_cn": "SSMC-JWE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–10 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-13"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -742,7 +1524,24 @@
     "name": "SSMC-K3 RF Coaxial Connector",
     "name_cn": "SSMC-K3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–10 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-13"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -758,7 +1557,24 @@
     "name": "BNC-J-3 RF Coaxial Connector",
     "name_cn": "BNC-J-3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–4 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-8"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -774,7 +1590,24 @@
     "name": "BNC-K-3 RF Coaxial Connector",
     "name_cn": "BNC-K-3射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–4 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.30"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-8"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -790,7 +1623,24 @@
     "name": "D4-JWE RF Coaxial Connector",
     "name_cn": "D4-JWE射频同轴连接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Frequency",
+        "value": "DC–11 GHz"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      },
+      {
+        "label": "Interface",
+        "value": "IEC 61169-4"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -806,7 +1656,20 @@
     "name": "SMA-KKY22.2 RF Adapter",
     "name_cn": "SMA-KKY22.2射频转接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Insertion Loss",
+        "value": "Low"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -822,7 +1685,20 @@
     "name": "SMA/MMCX-KJ RF Adapter",
     "name_cn": "SMA/MMCX-KJ射频转接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Insertion Loss",
+        "value": "Low"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      }
+    ],
     "price_usd": null,
     "images": [
       {
@@ -838,7 +1714,20 @@
     "name": "SMA/SSMA-KK RF Adapter",
     "name_cn": "SMA/SSMA-KK射频转接器",
     "description": null,
-    "specs": null,
+    "specs": [
+      {
+        "label": "Impedance",
+        "value": "50Ω"
+      },
+      {
+        "label": "Insertion Loss",
+        "value": "Low"
+      },
+      {
+        "label": "VSWR",
+        "value": "≤1.35"
+      }
+    ],
     "price_usd": null,
     "images": [
       {

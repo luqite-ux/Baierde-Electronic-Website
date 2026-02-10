@@ -129,6 +129,27 @@ export const product = defineType({
       of: [{type: 'string'}],
     }),
     defineField({
+      name: 'specs',
+      title: 'Technical Specifications',
+      type: 'array',
+      description: 'Product technical parameters (e.g. Impedance, Frequency, VSWR). Shown on product detail page.',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'label', type: 'string', title: 'Parameter Name' },
+            { name: 'value', type: 'string', title: 'Value' },
+          ],
+          preview: {
+            select: { label: 'label', value: 'value' },
+            prepare: ({ label, value }: { label?: string; value?: string }) => ({
+              title: [label, value].filter(Boolean).join(': '),
+            }),
+          },
+        },
+      ],
+    }),
+    defineField({
       name: 'sortOrder',
       title: 'Sort Order',
       type: 'number',
