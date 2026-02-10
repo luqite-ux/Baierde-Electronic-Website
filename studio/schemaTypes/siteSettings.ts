@@ -1,4 +1,4 @@
-import {defineType, defineField} from 'sanity'
+﻿import {defineType, defineField} from 'sanity'
 
 export const siteSettings = defineType({
   name: 'siteSettings',
@@ -12,4 +12,15 @@ export const siteSettings = defineType({
       description: 'Global product catalog download for the website',
     }),
   ],
+  preview: {
+    select: {
+      fileName: 'catalogFile.asset.originalFilename',
+    },
+    prepare({fileName}) {
+      return {
+        title: 'Site Settings',
+        subtitle: fileName || 'No catalog file uploaded',
+      }
+    },
+  },
 })
