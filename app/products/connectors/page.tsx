@@ -13,6 +13,9 @@ interface ConnectorsPageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
+// 构建时可能无法访问 Sanity，改为按需渲染
+export const dynamic = "force-dynamic"
+
 export default async function ConnectorsPage({ searchParams }: ConnectorsPageProps) {
   // Await searchParams in Next.js 15
   const sp = await searchParams

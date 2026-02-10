@@ -22,7 +22,9 @@ export const metadata: Metadata = {
   },
 }
 
-// 开发环境刷新即可看到 Sanity 变化；生产建议 60，可改为 300 降低后台更新频率
+// 构建时可能无法访问 Sanity（网络/超时），改为按需渲染，避免 build 失败
+export const dynamic = "force-dynamic"
+// 开发环境刷新即可看到 Sanity 变化；生产 60 秒再验证
 export const revalidate = 60
 
 export default async function ProductsPage() {

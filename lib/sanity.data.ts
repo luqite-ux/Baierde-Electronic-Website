@@ -178,10 +178,11 @@ export async function getConnectorProducts(
   // Build GROQ query with filters
   let query = `*[_type == "product" && series->category->slug.current == "connectors"`
   
-  // Series filter
+  // Series filter: 选项为 "BNC"/"SMA" 等，Sanity 中 series.name 可能是 "BNC" 或 "BNC Series"，需都匹配
   if (filters?.series && filters.series.length > 0) {
+    const expanded = filters.series.flatMap((s) => [s, `${s} Series`])
     const paramName = `series${paramIndex++}`
-    params[paramName] = filters.series
+    params[paramName] = expanded
     query += ` && series->name in $${paramName}`
   }
   
