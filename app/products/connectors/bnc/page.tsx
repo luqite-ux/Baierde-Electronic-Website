@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import Image from "next/image"
-import { getProductsBySeries } from "@/lib/data"
+import { getConnectorProducts } from "@/lib/sanity.data"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 }
 
 export default async function BNCSeriesPage() {
-  const bncProducts = await getProductsBySeries("BNC")
+  const bncProducts = await getConnectorProducts({ series: ["BNC"] })
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -136,28 +136,35 @@ export default async function BNCSeriesPage() {
 
       <div className="mb-12">
         <h2 className="text-2xl font-bold mb-6">BNC Connector Products</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {bncProducts.map((product) => (
-            <Link key={product._id} href={`/products/detail/${product.slug}`}>
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardContent className="p-4">
-                  <Image
-                    src={product.images[0] || "/placeholder.svg?height=300&width=300&query=BNC+RF+connector"}
-                    alt={product.title}
-                    width={300}
-                    height={300}
-                    className="rounded-lg mb-3 w-full aspect-square object-cover"
-                  />
-                  <h3 className="font-semibold mb-2 line-clamp-2">{product.title}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
-                  <Button variant="outline" size="sm" className="w-full bg-transparent">
-                    Request Quote
-                  </Button>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+        {bncProducts.length > 0 ? (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {bncProducts.map((product) => (
+              <Link
+                key={product._id}
+                href={product.slug ? `/products/connectors/${product.slug}` : "#"}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <Image
+                      src={product.imageUrl || "/placeholder.svg?height=300&width=300&query=BNC+RF+connector"}
+                      alt={product.title}
+                      width={300}
+                      height={300}
+                      className="rounded-lg mb-3 w-full aspect-square object-cover"
+                    />
+                    <h3 className="font-semibold mb-2 line-clamp-2">{product.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription ?? ""}</p>
+                    <Button variant="outline" size="sm" className="w-full bg-transparent">
+                      Request Quote
+                    </Button>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="text-muted-foreground">暂无 BNC 系列产品，请稍后在 Sanity 中添加。</p>
+        )}
       </div>
 
       <div className="mb-12">

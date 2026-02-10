@@ -5,8 +5,9 @@ import Image from "next/image"
 import { Menu, Search, X, ChevronDown } from "lucide-react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
+import type { PopularSeriesItem } from "@/lib/sanity.data"
 
-export function Header() {
+export function Header({ popularSeries = [] }: { popularSeries?: PopularSeriesItem[] }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [productsOpen, setProductsOpen] = useState(false)
   const [solutionsOpen, setSolutionsOpen] = useState(false)
@@ -43,17 +44,21 @@ export function Header() {
                 <Link href="/products/cable-assemblies" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
                   RF Cable Assemblies
                 </Link>
-                <div className="border-t border-border my-2" />
-                <div className="px-3 py-1 text-xs text-muted-foreground font-semibold">Popular Series</div>
-                <Link href="/products/connectors/sma" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  SMA Connectors
-                </Link>
-                <Link href="/products/connectors/mmcx" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  MMCX Connectors
-                </Link>
-                <Link href="/products/connectors/bnc" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  BNC Connectors
-                </Link>
+                {popularSeries.length > 0 && (
+                  <>
+                    <div className="border-t border-border my-2" />
+                    <div className="px-3 py-1 text-xs text-muted-foreground font-semibold">Popular Series</div>
+                    {popularSeries.map((series) => (
+                      <Link
+                        key={series._id}
+                        href={series.slug ? `/products/connectors/${series.slug.toLowerCase()}` : "#"}
+                        className="block px-3 py-2 text-sm hover:bg-muted rounded-md"
+                      >
+                        {series.name}
+                      </Link>
+                    ))}
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -147,6 +152,23 @@ export function Header() {
                   <Link href="/products/cable-assemblies" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
                     RF Cable Assemblies
                   </Link>
+                  {popularSeries.length > 0 && (
+                    <>
+                      <div className="border-t border-border my-2 pt-2 mt-2">
+                        <div className="text-xs text-muted-foreground font-semibold mb-2">Popular Series</div>
+                        {popularSeries.map((series) => (
+                          <Link
+                            key={series._id}
+                            href={series.slug ? `/products/connectors/${series.slug.toLowerCase()}` : "#"}
+                            className="block text-sm py-1"
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {series.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
             </div>

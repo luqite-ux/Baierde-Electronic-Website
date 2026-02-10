@@ -47,54 +47,6 @@ export interface BlogPost {
 
 export const mockProducts: Product[] = [
   {
-    _id: "1",
-    title: "SMA Straight Connector",
-    slug: "sma-straight-connector",
-    category: "connectors",
-    series: "SMA",
-    shortDescription: "High-frequency SMA connector with excellent performance up to 18GHz",
-    description:
-      "Our SMA straight connectors provide reliable RF signal transmission for telecom, aerospace, and test equipment applications. Manufactured to IEC standards with precision machining.",
-    specs: [
-      { label: "Frequency Range", value: "DC-18GHz" },
-      { label: "Impedance", value: "50Ω" },
-      { label: "Connector Type", value: "SMA Male/Female" },
-      { label: "Material", value: "Brass with Gold Plating" },
-    ],
-    images: ["/sma-rf-connector-closeup.jpg"],
-    overview: "Detailed overview of SMA straight connectors here...",
-    applications: ["Telecom", "Aerospace", "Test Equipment"],
-    packagingInfo: "Available in various lengths and gender configurations.",
-    seo: {
-      title: "SMA Straight Connector | High-Frequency RF Connector | Baierde",
-      description: "Premium SMA straight connectors for telecom and aerospace. DC-18GHz, 50Ω impedance, IEC certified.",
-    },
-  },
-  {
-    _id: "2",
-    title: "MMCX Right Angle Connector",
-    slug: "mmcx-right-angle-connector",
-    category: "connectors",
-    series: "MMCX",
-    shortDescription: "Compact MMCX connector ideal for automotive and mobile applications",
-    description:
-      "Space-saving MMCX right angle connector designed for high-density PCB applications. Perfect for automotive electronics, GPS systems, and mobile devices.",
-    specs: [
-      { label: "Frequency Range", value: "DC-6GHz" },
-      { label: "Impedance", value: "50Ω" },
-      { label: "Connector Type", value: "MMCX Male/Female" },
-      { label: "Durability", value: "500 mating cycles" },
-    ],
-    images: ["/mmcx-rf-connector-right-angle.jpg"],
-    overview: "Detailed overview of MMCX right angle connectors here...",
-    applications: ["Automotive", "Mobile"],
-    packagingInfo: "Compact design suitable for high-density PCBs.",
-    seo: {
-      title: "MMCX Right Angle Connector | Compact RF Connector | Baierde",
-      description: "Space-saving MMCX connectors for automotive and mobile devices. DC-6GHz, 500 mating cycles.",
-    },
-  },
-  {
     _id: "3",
     title: "MCX Straight Connector",
     slug: "mcx-straight-connector",
@@ -116,30 +68,6 @@ export const mockProducts: Product[] = [
     seo: {
       title: "MCX Straight Connector | Snap-On RF Connector | Baierde",
       description: "Quick snap-on MCX connectors for frequent mating. DC-6GHz, 50/75Ω.",
-    },
-  },
-  {
-    _id: "4",
-    title: "BNC Straight Connector",
-    slug: "bnc-straight-connector",
-    category: "connectors",
-    series: "BNC",
-    shortDescription: "Bayonet coupling BNC connector for test equipment",
-    description:
-      "Industry-standard BNC connectors with bayonet coupling mechanism. Widely used in video, test equipment, and RF applications up to 4GHz.",
-    specs: [
-      { label: "Frequency Range", value: "DC-4GHz" },
-      { label: "Impedance", value: "50Ω/75Ω" },
-      { label: "Connector Type", value: "BNC Male/Female" },
-      { label: "Coupling", value: "Bayonet" },
-    ],
-    images: ["/bnc-rf-connector.jpg"],
-    overview: "Detailed overview of BNC straight connectors here...",
-    applications: ["Video", "Test Equipment"],
-    packagingInfo: "Bayonet coupling for secure connections.",
-    seo: {
-      title: "BNC Straight Connector | Test Equipment RF Connector | Baierde",
-      description: "Bayonet BNC connectors for test and instrumentation. DC-4GHz, 50/75Ω.",
     },
   },
   {
@@ -353,78 +281,6 @@ export const mockProducts: Product[] = [
     seo: {
       title: "SMA Male to Male Adapter | Gender Changer | Baierde",
       description: "SMA barrel adapter for gender changes. Precision machined, DC-18GHz.",
-    },
-  },
-  {
-    _id: "14",
-    title: "SMA Cable Assembly - 50cm",
-    slug: "sma-cable-assembly-50cm",
-    category: "cable-assemblies",
-    series: "SMA",
-    shortDescription: "Custom-length SMA cable assembly with low-loss coaxial cable",
-    description:
-      "Pre-tested SMA cable assemblies using high-quality low-loss cable. Available in custom lengths and configurations for your specific application.",
-    specs: [
-      { label: "Cable Type", value: "RG316 / RG174" },
-      { label: "Length", value: "50cm (custom available)" },
-      { label: "Connector A", value: "SMA Male" },
-      { label: "Connector B", value: "SMA Male" },
-    ],
-    images: ["/sma-rf-cable-assembly.jpg"],
-    overview: "Detailed overview of SMA cable assemblies here...",
-    applications: ["Custom Lengths"],
-    packagingInfo: "Pre-tested cable assemblies with low-loss coaxial cable.",
-    seo: {
-      title: "SMA Cable Assembly 50cm | Custom RF Cable | Baierde",
-      description: "Pre-tested SMA cable assemblies with low-loss coaxial cable. Custom lengths available.",
-    },
-  },
-  {
-    _id: "15",
-    title: "MMCX Cable Assembly - 30cm",
-    slug: "mmcx-cable-assembly-30cm",
-    category: "cable-assemblies",
-    series: "MMCX",
-    shortDescription: "Flexible MMCX cable assembly for automotive applications",
-    description:
-      "Compact MMCX cable assemblies designed for automotive and mobile applications. Flexible cable for easy routing in tight spaces.",
-    specs: [
-      { label: "Cable Type", value: "RG178" },
-      { label: "Length", value: "30cm (custom available)" },
-      { label: "Connector A", value: "MMCX Male" },
-      { label: "Connector B", value: "MMCX Female" },
-    ],
-    images: ["/mmcx-flexible-cable-assembly.jpg"],
-    overview: "Detailed overview of MMCX cable assemblies here...",
-    applications: ["Automotive"],
-    packagingInfo: "Flexible cable for easy routing in tight spaces.",
-    seo: {
-      title: "MMCX Cable Assembly 30cm | Automotive RF Cable | Baierde",
-      description: "Flexible MMCX cable assemblies for automotive. RG178, custom lengths.",
-    },
-  },
-  {
-    _id: "16",
-    title: "BNC Cable Assembly - 1m",
-    slug: "bnc-cable-assembly-1m",
-    category: "cable-assemblies",
-    series: "BNC",
-    shortDescription: "BNC test cable assembly for laboratory use",
-    description:
-      "Professional-grade BNC cable assemblies for test and measurement applications. Low loss and excellent shielding for accurate measurements.",
-    specs: [
-      { label: "Cable Type", value: "RG58 / RG59" },
-      { label: "Length", value: "1m (custom available)" },
-      { label: "Connector A", value: "BNC Male" },
-      { label: "Connector B", value: "BNC Male" },
-    ],
-    images: ["/bnc-test-cable-assembly.jpg"],
-    overview: "Detailed overview of BNC cable assemblies here...",
-    applications: ["Laboratory Use"],
-    packagingInfo: "Low loss and excellent shielding for accurate measurements.",
-    seo: {
-      title: "BNC Cable Assembly 1m | Test Cable | Baierde",
-      description: "Professional BNC test cables for accurate measurements. Low loss, RG58/RG59.",
     },
   },
 ]
