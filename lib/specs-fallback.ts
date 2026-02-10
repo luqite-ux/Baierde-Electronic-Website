@@ -1,6 +1,7 @@
 /**
- * 产品技术参数按系列 fallback（与 scripts/sync-specs-to-sanity.ts 一致）
- * 当 Sanity 未返回 specs 或 schema 未部署时，前端仍能展示完整参数
+ * 各系列产品技术参数（规格书红框「主要技术特性」）
+ * - 详情页：getProductBySlug 统一用 getSpecsForSeries 覆盖 product.specs，所有系列详情都显示本文件参数
+ * - 列表页：通过 getFrequencyAndImpedanceFromDetailSpecs 从同一套 getSpecsForSeries 取频率/阻抗，与详情同源
  */
 
 export type SpecItem = { label: string; value: string }
@@ -169,7 +170,7 @@ const ADAPTER_SPECS: SpecItem[] = [
   { label: "VSWR", value: "≤1.35" },
 ]
 
-/** 从详情页使用的 getSpecsForSeries 中取出 Frequency / Impedance，列表卡片与详情以详情为准 */
+/** 列表卡片用：从与详情相同的 getSpecsForSeries 中取出 Frequency / Impedance，保证列表与详情参数一致 */
 export function getFrequencyAndImpedanceFromDetailSpecs(
   seriesName: string | null,
   title: string

@@ -350,7 +350,8 @@ export async function getProductBySlug(slug: string): Promise<ProductDetail | nu
   
   const product = await sanityClient.fetch<ProductDetail | null>(query, { slug })
   if (!product) return null
-  if (!product.specs?.length && (product.seriesName || product.title)) {
+  // 详情技术参数统一以规格书为准：所有系列都用 getSpecsForSeries 覆盖 Sanity specs，列表与详情同源
+  if (product.seriesName || product.title) {
     product.specs = getSpecsForSeries(product.seriesName ?? null, product.title ?? '')
   }
   return product

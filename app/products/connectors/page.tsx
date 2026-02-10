@@ -140,7 +140,7 @@ export default async function ConnectorsPage({ searchParams }: ConnectorsPagePro
                     {product.shortDescription && (
                       <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
                     )}
-                    {/* Key specs chips：与详情页规格一致，以详情为准（来自 getSpecsForSeries） */}
+                    {/* 列表技术参数与详情同源：getFrequencyAndImpedanceFromDetailSpecs → getSpecsForSeries（规格书） */}
                     <div className="flex flex-wrap gap-1 mb-3">
                       {(() => {
                         const { frequency, impedance } = getFrequencyAndImpedanceFromDetailSpecs(

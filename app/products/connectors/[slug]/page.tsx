@@ -239,7 +239,7 @@ async function ProductDetailView({
             )}
           </div>
 
-          {/* Key Specifications：优先展示 Sanity product.specs，否则展示 frequencyMax/impedance 等 */}
+          {/* Key Specifications：由 getProductBySlug 统一设为 getSpecsForSeries（规格书红框参数），与列表同源 */}
           <Card className="border-primary/20">
             <CardContent className="p-6">
               <h3 className="text-sm font-semibold mb-4 text-muted-foreground uppercase">Specifications</h3>
@@ -344,6 +344,7 @@ async function SeriesPageView({
                 {product.shortDescription && (
                   <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
                 )}
+                {/* 与详情同源：getFrequencyAndImpedanceFromDetailSpecs → getSpecsForSeries */}
                 <div className="flex flex-wrap gap-1 mb-3">
                   {(() => {
                     const { frequency, impedance } = getFrequencyAndImpedanceFromDetailSpecs(
