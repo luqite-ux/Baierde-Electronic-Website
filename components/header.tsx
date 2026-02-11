@@ -16,7 +16,7 @@ export function Header({ popularSeries = [] }: { popularSeries?: PopularSeriesIt
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/images/logo1.png" alt="Baierde Electronic" width={200} height={80} className="h-14 w-auto" />
+          <Image src="/images/logo1.png" alt="Baierde Electronic" width={200} height={80} className="h-16 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
