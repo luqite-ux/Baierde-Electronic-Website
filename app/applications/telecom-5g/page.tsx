@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import type { Metadata } from "next"
-import { Radio, Wifi, TowerCell, Cable, CheckCircle } from "lucide-react"
+import { Radio, Wifi, TowerControl, Cable, CheckCircle } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "5G & Telecommunications RF Connectors | Baierde Electronic",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 const applications = [
-  { icon: TowerCell, label: "5G base stations & small cells" },
+  { icon: TowerControl, label: "5G base stations & small cells" },
   { icon: Radio, label: "Macro and indoor antennas" },
   { icon: Wifi, label: "Backhaul and fronthaul links" },
   { icon: Cable, label: "RRU/BBU and feeder systems" },
