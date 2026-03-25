@@ -29,6 +29,13 @@ export default defineConfig({
               .child(
                 S.documentTypeList('inquiry').defaultOrdering([{ field: 'createdAt', direction: 'desc' }])
               ),
+            S.divider(),
+            S.documentTypeListItem('post').title('Blog & Insights'),
+            S.listItem()
+              .title('Frequently Asked Questions')
+              .id('faq')
+              .child(S.documentTypeList('faq').defaultOrdering([{field: 'order', direction: 'asc'}])),
+            S.divider(),
             S.documentTypeListItem('category'),
             S.documentTypeListItem('series'),
             S.documentTypeListItem('product'),
