@@ -2,14 +2,15 @@
 
 import { mockProducts, mockBlogPosts, type Product, type BlogPost } from "./mock-data"
 import { getProductBySlug as getSanityProductBySlug } from "./sanity.data"
+import { dbArticles, dbProduct, dbProducts } from './unified-content'
 
 export async function getProducts(): Promise<Product[]> {
-  // TODO: Replace with Sanity query
-  // const products = await client.fetch('*[_type == "product"]');
-  return mockProducts
+  return (await dbProducts()) ?? mockProducts
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | undefined> {
+  const unified = await dbProduct(slug)
+  if (unified !== undefined) return unified ?? undefined
   const mock = mockProducts.find((p) => p.slug === slug)
   if (!mock) return undefined
   // 从 Sanity 拉取产品视频，合并到 mock 数据，便于详情页展示
@@ -25,29 +26,25 @@ export async function getProductBySlug(slug: string): Promise<Product | undefine
 }
 
 export async function getProductsByCategory(category: string): Promise<Product[]> {
-  // TODO: Replace with Sanity query
-  return mockProducts.filter((p) => p.category === category)
+  return (await getProducts()).filter((p) => p.category === category)
 }
 
 export async function getProductsBySeries(series: string): Promise<Product[]> {
-  // TODO: Replace with Sanity query
-  return mockProducts.filter((p) => p.series?.toLowerCase() === series.toLowerCase())
+  return (await getProducts()).filter((p) => p.series?.toLowerCase() === series.toLowerCase())
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  // TODO: Replace with Sanity query
-  return mockBlogPosts
+  return (await dbArticles()) ?? mockBlogPosts
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
-  // TODO: Replace with Sanity query
-  return mockBlogPosts.find((p) => p.slug === slug)
+  return (await getBlogPosts()).find((p) => p.slug === slug)
 }
 
 export async function getRelatedProducts(productId: string, series?: string, category?: string): Promise<Product[]> {
   // TODO: Replace with Sanity query
   // Get products from same series or same category, excluding current product
-  const related = mockProducts.filter((p) => {
+  const related = (await getProducts()).filter((p) => {
     if (p._id === productId) return false
     if (series && p.series?.toLowerCase() === series.toLowerCase()) return true
     if (category && p.category === category) return true

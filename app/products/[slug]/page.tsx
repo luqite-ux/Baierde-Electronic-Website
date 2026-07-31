@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import ProductQuoteForm from "@/components/product-quote-form"
+import { ProductQuoteForm } from "@/components/product-quote-form"
 import { getProductBySlug, getProducts, getRelatedProducts } from "@/lib/data"
 import type { Metadata } from "next"
 import type { ProductVideo } from "@/lib/mock-data"
@@ -31,8 +31,11 @@ function hasProductVideo(pv: ProductVideo | null | undefined): boolean {
 }
 
 interface ProductPageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
+
+export const revalidate = 60
+export const dynamicParams = true
 
 // 兼容 images: string | {src, alt}
 function getImgSrc(img: any): string {
@@ -48,7 +51,8 @@ function getImgAlt(img: any, fallback: string): string {
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = await getProductBySlug(params.slug)
+  const { slug } = await params
+  const product = await getProductBySlug(slug)
   if (!product) return { title: "Product Not Found" }
 
   const url = `https://brdelectronic.com/products/${product.slug}`
@@ -82,7 +86,8 @@ export async function generateStaticParams() {
 }
 
 export default async function ProductDetailPage({ params }: ProductPageProps) {
-  const product = await getProductBySlug(params.slug)
+  const { slug } = await params
+  const product = await getProductBySlug(slug)
   if (!product) notFound()
 
   const relatedProducts = await getRelatedProducts(product._id, product.series, product.category)
@@ -209,7 +214,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         <Card className="border-primary/20">
           <CardContent className="p-8">
             <h2 className="text-2xl font-bold mb-4">Request a Quote for {product.title}</h2>
-            <ProductQuoteForm product={product.title} />
+            <ProductQuoteForm productTitle={product.title} productSlug={product.slug} />
           </CardContent>
         </Card>
       </div>

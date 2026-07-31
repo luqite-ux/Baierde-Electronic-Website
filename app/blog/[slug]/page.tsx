@@ -8,6 +8,9 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 
+export const revalidate = 60
+export const dynamicParams = true
+
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params
   const post = await getBlogPostBySlug(slug)
@@ -60,9 +63,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="text-xl text-muted-foreground">{post.excerpt}</p>
         </header>
 
-        <div className="prose prose-lg max-w-none">
-          <p className="text-muted-foreground leading-relaxed">{post.content}</p>
-        </div>
+        <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{__html: post.content}} />
       </article>
     </div>
   )

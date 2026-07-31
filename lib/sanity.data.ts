@@ -1,5 +1,6 @@
 import {sanityClient} from './sanity.client'
 import {getSpecsForSeries} from './specs-fallback'
+import {dbCategories, dbProduct, dbProducts} from './unified-content'
 
 /** ---------- Categories ---------- */
 /** 分类卡片图片来自 Sanity category.image (Card Image)。 */
@@ -22,6 +23,8 @@ const CATEGORIES_QUERY = `
 `
 
 export async function getCategories(): Promise<CategoryCard[]> {
+  const rows = await dbCategories()
+  if (rows) return rows.filter((row) => !row.parent_id).map((row) => ({_id:row.id,title:row.name,slug:row.slug,description:row.description,imageUrl:row.icon}))
   return sanityClient.fetch(CATEGORIES_QUERY)
 }
 
@@ -54,6 +57,8 @@ const PRODUCTS_QUERY = `
 `
 
 export async function getProducts(): Promise<ProductListItem[]> {
+  const rows = await dbProducts()
+  if (rows) return rows.map((row) => ({_id:row._id,title:row.title,slug:row.slug,seriesName:row.series,imageUrl:row.images[0],shortDescription:row.shortDescription}))
   return sanityClient.fetch(PRODUCTS_QUERY)
 }
 
@@ -114,6 +119,8 @@ const FALLBACK_FREQ_MAP: Record<string, string> = {
 }
 
 export async function getPopularSeries(): Promise<PopularSeriesItem[]> {
+  const categories = await dbCategories()
+  if (categories) return categories.filter((row) => row.parent_id && row.extra_data?.root_category_slug === 'connectors').slice(0,5).map((row) => ({_id:row.id,name:row.name,slug:row.slug,frequencyLabel:FALLBACK_FREQ_MAP[row.name]||''}))
   const series = await sanityClient.fetch<PopularSeriesItem[]>(POPULAR_SERIES_QUERY)
   
   // Apply fallback frequency labels if missing
@@ -171,6 +178,8 @@ const IMPEDANCE_VALUE_MAP: Record<string, number> = {
 export async function getConnectorProducts(
   filters?: ConnectorProductFilters
 ): Promise<ConnectorProduct[]> {
+  const unified = await dbProducts()
+  if (unified) return unified.filter((row) => row.category === 'connectors' && (!filters?.series?.length || filters.series.some((value) => row.series?.toLowerCase().startsWith(value.toLowerCase())))).map((row) => ({_id:row._id,title:row.title,slug:row.slug,seriesName:row.series||null,imageUrl:row.images[0]||null,shortDescription:row.shortDescription}))
   // Build GROQ query parameters
   const params: Record<string, unknown> = {}
   let paramIndex = 0
@@ -238,6 +247,8 @@ export async function getConnectorProducts(
 
 /** ---------- Products by Category (cable-assemblies / adapters 等) ---------- */
 export async function getProductsByCategory(categorySlug: string): Promise<ConnectorProduct[]> {
+  const unified = await dbProducts()
+  if (unified) return unified.filter((row) => row.category === categorySlug).map((row) => ({_id:row._id,title:row.title,slug:row.slug,seriesName:row.series||null,imageUrl:row.images[0]||null,shortDescription:row.shortDescription}))
   const query = `
     *[_type == "product" && series->category->slug.current == $categorySlug] | order(sortOrder asc, title asc) {
       _id,
@@ -263,6 +274,8 @@ export type SeriesByCategory = {
 }
 
 export async function getSeriesByCategory(categorySlug: string): Promise<SeriesByCategory[]> {
+  const categories = await dbCategories()
+  if (categories) return categories.filter((row) => row.parent_id && row.extra_data?.root_category_slug === categorySlug).map((row) => ({_id:row.id,name:row.name,slug:row.slug}))
   const query = `
     *[_type == "series" && category->slug.current == $categorySlug] | order(sortOrder asc, name asc) {
       _id,
@@ -279,6 +292,8 @@ export async function getSeriesBySlug(
   categorySlug: string,
   seriesSlug: string
 ): Promise<SeriesByCategory | null> {
+  const categories = await dbCategories()
+  if (categories) { const row=categories.find((item)=>item.slug===seriesSlug && item.extra_data?.root_category_slug===categorySlug); return row?{_id:row.id,name:row.name,slug:row.slug}:null }
   const query = `
     *[_type == "series" && category->slug.current == $categorySlug && slug.current == $seriesSlug][0] {
       _id,
@@ -322,6 +337,8 @@ export type ProductDetail = {
 }
 
 export async function getProductBySlug(slug: string): Promise<ProductDetail | null> {
+  const unified = await dbProduct(slug)
+  if (unified !== undefined) return unified ? {_id:unified._id,title:unified.title,slug:unified.slug,seriesName:unified.series||null,imageUrl:unified.images[0]||null,shortDescription:unified.shortDescription,specs:unified.specs,productVideo:unified.productVideo||null} : null
   const query = `
     *[_type == "product" && slug.current == $slug][0] {
       _id,

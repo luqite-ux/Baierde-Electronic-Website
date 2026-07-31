@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { createSanityWriteClient } from "@/lib/sanity.write"
+import { createClient } from '@supabase/supabase-js'
 
 type ContactBody = {
   name?: string
@@ -20,31 +20,27 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as ContactBody
 
-    if (!process.env.SANITY_WRITE_TOKEN) {
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || !process.env.NEXT_PUBLIC_TENANT_ID) {
       return NextResponse.json(
-        { ok: false, error: "SANITY_WRITE_TOKEN is not configured.", step: "sanity" as const },
+        { ok: false, error: "Inquiry service is not configured." },
         { status: 500 }
       )
     }
 
-    const sanityWriteClient = createSanityWriteClient()
-
-    const doc = await sanityWriteClient.create({
-      _type: "inquiry",
+    const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } })
+    const message = [body.message, body.product && `Product: ${body.product}`, body.quantity && `Quantity: ${body.quantity}`, body.country && `Country: ${body.country}`, body.productSlug && `Product slug: ${body.productSlug}`, body.attachmentFileName && `Attachment: ${body.attachmentFileName}`].filter(Boolean).join('\n')
+    const { data, error } = await supabase.from('inquiries').insert({
+      tenant_id: process.env.NEXT_PUBLIC_TENANT_ID,
       name: body.name ?? "",
       email: body.email ?? "",
       company: body.company ?? "",
-      country: body.country ?? "",
-      product: body.product ?? "",
-      quantity: body.quantity ?? "",
-      message: body.message ?? "",
-      productSlug: body.productSlug ?? "",
-      attachmentFileName: body.attachmentFileName ?? "",
-      status: "new",
-      createdAt: new Date().toISOString(),
-    })
+      subject: body.product ? `Website inquiry: ${body.product}` : 'Website inquiry',
+      message,
+      status: 'unread',
+    }).select('id').single()
+    if (error) throw error
 
-    return NextResponse.json({ ok: true, inquiryId: doc._id })
+    return NextResponse.json({ ok: true, inquiryId: data.id })
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Unexpected error"
     return NextResponse.json(
