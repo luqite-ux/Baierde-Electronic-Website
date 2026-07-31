@@ -112,6 +112,19 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{__html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: product.title,
+          description: product.description || product.shortDescription,
+          image: product.images,
+          category: product.category,
+          brand: {"@type": "Brand", name: "Baierde Electronic"},
+          url: `https://brdelectronic.com/products/${product.slug}`,
+        })}}
+      />
       <Breadcrumbs items={breadcrumbItems.slice(1)} />
 
       <div className="grid gap-12 lg:grid-cols-2 mb-16">
