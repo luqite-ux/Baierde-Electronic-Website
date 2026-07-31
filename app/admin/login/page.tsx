@@ -1,15 +1,13 @@
-type AdminLoginPageProps = {
-  searchParams: Promise<{ error?: string | string[]; reason?: string | string[] }>
-}
+'use client'
 
-function firstParam(value: string | string[] | undefined) {
-  return Array.isArray(value) ? value[0] : value
-}
+import { Suspense, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 
-export default async function AdminLoginPage({ searchParams }: AdminLoginPageProps) {
-  const params = await searchParams
-  const error = firstParam(params.error)
-  const reason = firstParam(params.reason)
+function LoginForm() {
+  const params = useSearchParams()
+  const [pending, setPending] = useState(false)
+  const error = params.get('error')
+  const reason = params.get('reason')
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 to-cyan-50 p-4">
@@ -25,7 +23,12 @@ export default async function AdminLoginPage({ searchParams }: AdminLoginPagePro
           </p>
         ) : null}
 
-        <form action="/api/auth/login" method="post" className="space-y-4">
+        <form
+          action="/api/auth/login"
+          method="post"
+          className="space-y-4"
+          onSubmit={() => setPending(true)}
+        >
           {error ? (
             <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>
           ) : null}
@@ -60,12 +63,27 @@ export default async function AdminLoginPage({ searchParams }: AdminLoginPagePro
 
           <button
             type="submit"
-            className="w-full rounded-lg bg-cyan-800 px-4 py-2.5 text-sm font-medium text-white hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-cyan-600 focus:ring-offset-2"
+            disabled={pending}
+            className="w-full rounded-lg bg-cyan-800 px-4 py-2.5 text-sm font-medium text-white hover:bg-cyan-900 focus:outline-none focus:ring-2 focus:ring-cyan-600 focus:ring-offset-2 disabled:opacity-60"
           >
-            登录
+            {pending ? '登录中…' : '登录'}
           </button>
         </form>
       </div>
     </main>
+  )
+}
+
+export default function AdminLoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-slate-50 text-slate-600">
+          加载中…
+        </div>
+      }
+    >
+      <LoginForm />
+    </Suspense>
   )
 }
