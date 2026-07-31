@@ -1,5 +1,6 @@
 export async function register() {
-    const { EnvHttpProxyAgent, setGlobalDispatcher } = await import("undici");
-    setGlobalDispatcher(new EnvHttpProxyAgent());
-  }
-  
+  if (process.env.NEXT_RUNTIME !== 'nodejs') return
+
+  const { EnvHttpProxyAgent, setGlobalDispatcher } = await import('undici')
+  setGlobalDispatcher(new EnvHttpProxyAgent())
+}

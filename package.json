@@ -11,7 +11,7 @@
     "import-products": "tsx scripts/import-products.ts",
     "upload-images": "tsx scripts/upload-product-images.ts",
     "cleanup-categories": "tsx scripts/cleanup-categories.ts",
-    "test:admin": "node --test scripts/admin-proxy-contract.test.mjs",
+    "test:admin": "node --test scripts/admin-proxy-contract.test.mjs && node --import tsx --test scripts/instrumentation-runtime.test.mjs",
     "move-cable-assembly": "tsx scripts/move-cable-assembly-to-category.ts",
     "move-adapters": "tsx scripts/move-adapters-to-category.ts",
     "sync-specs-to-sanity": "tsx scripts/sync-specs-to-sanity.ts",
