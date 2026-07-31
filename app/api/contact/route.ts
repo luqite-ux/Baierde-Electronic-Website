@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
     const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY, { auth: { persistSession: false } })
     const message = [body.message, body.product && `Product: ${body.product}`, body.quantity && `Quantity: ${body.quantity}`, body.country && `Country: ${body.country}`, body.productSlug && `Product slug: ${body.productSlug}`, body.attachmentFileName && `Attachment: ${body.attachmentFileName}`].filter(Boolean).join('\n')
-    const { data, error } = await supabase.from('inquiries').insert({
+    const { error } = await supabase.from('inquiries').insert({
       tenant_id: process.env.NEXT_PUBLIC_TENANT_ID,
       name: body.name ?? "",
       email: body.email ?? "",
@@ -37,12 +37,12 @@ export async function POST(request: Request) {
       subject: body.product ? `Website inquiry: ${body.product}` : 'Website inquiry',
       message,
       status: 'unread',
-    }).select('id').single()
+    })
     if (error) throw error
 
-    return NextResponse.json({ ok: true, inquiryId: data.id })
+    return NextResponse.json({ ok: true })
   } catch (e) {
-    const msg = e instanceof Error ? e.message : "Unexpected error"
+    const msg = e instanceof Error ? e.message : typeof e === 'object' && e && 'message' in e ? String(e.message) : "Unexpected error"
     return NextResponse.json(
       { ok: false, error: msg },
       { status: 500 }
