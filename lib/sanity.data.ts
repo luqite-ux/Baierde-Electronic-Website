@@ -1,6 +1,6 @@
 import {sanityClient} from './sanity.client'
 import {getSpecsForSeries} from './specs-fallback'
-import {dbCategories, dbProduct, dbProducts} from './unified-content'
+import {dbCatalogFile, dbCategories, dbProduct, dbProducts} from './unified-content'
 
 /** ---------- Categories ---------- */
 /** 分类卡片图片来自 Sanity category.image (Card Image)。 */
@@ -389,6 +389,8 @@ const CATALOG_QUERY = `
 `
 
 export async function getCatalogFile(): Promise<CatalogFile> {
+  const unified = await dbCatalogFile()
+  if (unified) return unified
   const raw = await sanityClient.fetch<{ fileUrl?: string | null; fileName?: string | null }>(CATALOG_QUERY)
   if (!raw) return { fileUrl: null, fileName: null }
   return {
