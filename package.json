@@ -7,6 +7,7 @@
     "dev": "next dev",
     "studio:dev": "pnpm --filter studio dev",
     "lint": "eslint .",
+    "test:content": "node --test tests/public-content-policy.test.mjs",
     "start": "next start",
     "import-products": "tsx scripts/import-products.ts",
     "upload-images": "tsx scripts/upload-product-images.ts",

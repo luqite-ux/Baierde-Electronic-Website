@@ -61,18 +61,18 @@ export default function TermsOfServicePage() {
           <h2 className="text-2xl font-bold mb-4">4. Product Information</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             We strive to ensure that product descriptions, specifications, and technical information on our website are
-            accurate. Such information is for general reference only and does not constitute a guarantee unless expressly
-            stated in a written agreement. For precise specifications and suitability for your application, please contact
+            accurate. Such information is for general reference only and does not create binding product specifications unless
+            confirmed in a written agreement. For precise specifications and suitability for your application, please contact
             our sales or engineering team.
           </p>
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold mb-4">5. Disclaimer of Warranties</h2>
+          <h2 className="text-2xl font-bold mb-4">5. Website Availability</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            The website and its content are provided &quot;as is&quot; without warranties of any kind, either express or implied, to the
-            fullest extent permitted by law. We do not warrant that the site will be uninterrupted, error-free, or free of
-            viruses or other harmful components. Any reliance on the information on this site is at your own risk.
+            The website and its content are provided &quot;as is&quot; to the fullest extent permitted by law. The site may experience
+            interruptions or contain errors, and users should independently verify information relevant to their application.
+            Any reliance on the information on this site is at your own risk.
           </p>
         </section>
 

@@ -9,7 +9,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Contact Us & Request Quote | Baierde Electronic",
   description:
-    "Get in touch with Baierde Electronic for RF connector inquiries, quotes, and technical support. Fast response guaranteed.",
+    "Get in touch with Baierde Electronic for RF connector inquiries, quotes, and technical support from our sales and engineering team.",
   alternates: {
     canonical: "https://brdelectronic.com/contact",
   },
