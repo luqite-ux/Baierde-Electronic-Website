@@ -3,18 +3,20 @@ import Image from "next/image"
 import { Mail, Phone, MapPin, MessageCircle } from "lucide-react"
 
 export function Footer() {
+  const footerCompanyName = 'Zhenjiang Baierde Electronic Co., Ltd.'.replace(/[.\s]+$/, '')
+
   return (
     <footer className="border-t border-border bg-muted/30">
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="mb-4">
-            <Link href="/" className="inline-block">
+            <Link href="/" aria-label="Baierde Electronic home" className="inline-block max-w-full">
               <Image
                 src="/images/logo1.png"
                 alt="Baierde Electronic RF Connector Manufacturer Logo"
                 width={260}
                 height={91}
-                className="mb-3 h-auto w-[105px] md:w-[130px]"
+                className="mb-3 h-auto w-[132px] max-w-full object-contain md:w-[180px]"
               />
             </Link>
             <p className="text-xs text-muted-foreground/80 mb-4 leading-relaxed">
@@ -143,7 +145,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Zhenjiang Baierde Electronic Co., Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {footerCompanyName}. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-primary transition-colors">
               Privacy Policy

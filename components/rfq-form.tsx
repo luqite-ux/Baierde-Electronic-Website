@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Upload, CheckCircle } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { InquiryCaptchaField } from "@/components/inquiry-captcha-field"
 
 export function RFQForm() {
   const [formData, setFormData] = useState({
@@ -26,6 +27,7 @@ export function RFQForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
   const [attachmentFileName, setAttachmentFileName] = useState<string>("")
+  const [captchaRefreshKey, setCaptchaRefreshKey] = useState(0)
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
@@ -44,7 +46,7 @@ export function RFQForm() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     if (!validateForm()) return
@@ -53,6 +55,7 @@ export function RFQForm() {
     setSubmitError(null)
 
     try {
+      const challenge = new FormData(e.currentTarget)
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -64,6 +67,9 @@ export function RFQForm() {
           product: formData.product,
           quantity: formData.quantity,
           message: formData.message,
+          captchaToken: String(challenge.get("captchaToken") || ""),
+          captchaAnswer: String(challenge.get("captchaAnswer") || ""),
+          captchaScope: String(challenge.get("captchaScope") || ""),
           ...(attachmentFileName ? { attachmentFileName } : {}),
         }),
       })
@@ -71,11 +77,13 @@ export function RFQForm() {
 
       if (!res.ok || !data.ok) {
         setSubmitError(data.error || "Failed to send. Please try again.")
+        setCaptchaRefreshKey((current) => current + 1)
         return
       }
       setIsSubmitted(true)
     } catch {
       setSubmitError("Network error. Please try again.")
+      setCaptchaRefreshKey((current) => current + 1)
     } finally {
       setIsSubmitting(false)
     }
@@ -223,6 +231,8 @@ export function RFQForm() {
           <AlertDescription>{submitError}</AlertDescription>
         </Alert>
       )}
+
+      <InquiryCaptchaField refreshKey={captchaRefreshKey} />
 
       <Button
         type="submit"
