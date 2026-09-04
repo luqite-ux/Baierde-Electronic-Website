@@ -65,6 +65,12 @@ export default async function RootLayout({
       <body className={`font-sans antialiased`}>
         <ConditionalSiteLayout popularSeries={popularSeries}>{children}</ConditionalSiteLayout>
         <Analytics />
+        {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_TENANT_ID && (
+          <script
+            async
+            src={`https://admin.globle-trade.com/api/public/analytics.js?tenantId=${encodeURIComponent(process.env.NEXT_PUBLIC_TENANT_ID)}`}
+          />
+        )}
       </body>
     </html>
   )
