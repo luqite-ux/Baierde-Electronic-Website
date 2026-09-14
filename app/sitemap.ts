@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next"
 import { getProducts, getBlogPosts } from "@/lib/data"
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://brdelectronic.com"
+  const baseUrl = "https://www.brdelectronic.com"
 
   const products = await getProducts()
   const posts = await getBlogPosts()
@@ -15,8 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   const blogUrls = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
+    url: `${baseUrl}/blog/${encodeURIComponent(post.slug)}`,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }))
@@ -105,4 +105,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 }
 
-export const revalidate = 60
+export const dynamic = 'force-dynamic'

@@ -5,12 +5,14 @@ import { getBlogPosts } from "@/lib/data"
 import { Calendar } from "lucide-react"
 import type { Metadata } from "next"
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: "RF Connector Industry Blog & Insights | Baierde Electronic",
   description:
     "Expert insights on RF connectors, 5G technology, industry standards, and connectivity solutions. Technical articles and application guides.",
   alternates: {
-    canonical: "https://brdelectronic.com/blog",
+    canonical: "https://www.brdelectronic.com/blog",
   },
 }
 
@@ -28,11 +30,12 @@ export default async function BlogPage() {
         </p>
       </div>
 
+      {posts.length === 0 && <p>No articles have been published yet.</p>}
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <Link key={post._id} href={`/blog/${post.slug}`}>
-            <Card className="h-full hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
+          <Link key={post._id} href={`/blog/${encodeURIComponent(post.slug)}`} className="h-full">
+            <Card className="h-full flex flex-col hover:shadow-lg transition-shadow">
+              <CardContent className="p-6 flex flex-1 flex-col">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
                   <Calendar className="h-4 w-4" />
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {
@@ -43,6 +46,7 @@ export default async function BlogPage() {
                 </div>
                 <h2 className="text-xl font-semibold mb-3 line-clamp-2">{post.title}</h2>
                 <p className="text-muted-foreground line-clamp-3">{post.excerpt}</p>
+                <span className="mt-auto pt-6 font-medium">Read article →</span>
               </CardContent>
             </Card>
           </Link>

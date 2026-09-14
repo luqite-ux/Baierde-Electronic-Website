@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { getBlogPostBySlug, getBlogPosts } from "@/lib/data"
+import { getBlogPostBySlug } from "@/lib/data"
 import { Calendar } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -8,7 +8,7 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
 export const dynamicParams = true
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
@@ -25,16 +25,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: post.seo.title,
     description: post.seo.description,
     alternates: {
-      canonical: `https://brdelectronic.com/blog/${slug}`,
+      canonical: `https://www.brdelectronic.com/blog/${encodeURIComponent(slug)}`,
+    },
+    openGraph: { type: 'article', title: post.title, description: post.seo.description,
+      url: `https://www.brdelectronic.com/blog/${encodeURIComponent(slug)}`,
+      ...(post.featuredImage ? { images: [post.featuredImage] } : {}),
     },
   }
-}
-
-export async function generateStaticParams() {
-  const posts = await getBlogPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -47,6 +44,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'Article',
+        '@id': `https://www.brdelectronic.com/blog/${encodeURIComponent(slug)}#article`,
+        mainEntityOfPage: `https://www.brdelectronic.com/blog/${encodeURIComponent(slug)}`,
+        headline: post.title, description: post.excerpt, datePublished: post.publishedAt,
+        dateModified: post.updatedAt || post.publishedAt, inLanguage: 'en',
+        ...(post.featuredImage ? { image: post.featuredImage } : {}),
+      }).replace(/</g, '\\u003c') }} />
       <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: post.title }]} />
 
       <article className="max-w-3xl mx-auto">
@@ -63,7 +68,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <p className="text-xl text-muted-foreground">{post.excerpt}</p>
         </header>
 
-        <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{__html: post.content}} />
+        <div className="article-prose text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{__html: post.content}} />
       </article>
     </div>
   )

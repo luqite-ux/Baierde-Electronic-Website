@@ -39,6 +39,8 @@ export interface BlogPost {
   excerpt: string
   content: string
   publishedAt: string
+  updatedAt?: string
+  featuredImage?: string
   seo: {
     title: string
     description: string

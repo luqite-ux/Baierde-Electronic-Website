@@ -1,6 +1,6 @@
 // Data fetching functions - currently using mock data, ready for Sanity integration
 
-import { mockProducts, mockBlogPosts, type Product, type BlogPost } from "./mock-data"
+import { mockProducts, type Product, type BlogPost } from "./mock-data"
 import { getProductBySlug as getSanityProductBySlug } from "./sanity.data"
 import { dbArticles, dbProduct, dbProducts } from './unified-content'
 
@@ -33,12 +33,12 @@ export async function getProductsBySeries(series: string): Promise<Product[]> {
   return (await getProducts()).filter((p) => p.series?.toLowerCase() === series.toLowerCase())
 }
 
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  return (await dbArticles()) ?? mockBlogPosts
+export async function getBlogPosts(locale = 'en'): Promise<BlogPost[]> {
+  return dbArticles(locale)
 }
 
-export async function getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
-  return (await getBlogPosts()).find((p) => p.slug === slug)
+export async function getBlogPostBySlug(slug: string, locale = 'en'): Promise<BlogPost | undefined> {
+  return (await getBlogPosts(locale)).find((p) => p.slug === slug)
 }
 
 export async function getRelatedProducts(productId: string, series?: string, category?: string): Promise<Product[]> {
