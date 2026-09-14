@@ -139,3 +139,11 @@
 .article-prose table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; }
 .article-prose :is(td, th) { padding: .75rem; border: 1px solid var(--border); text-align: left; }
 .article-prose pre { max-width: 100%; overflow-x: auto; }
+
+.site-footer {
+  background: #f6f4f0;
+  color: #202020;
+  --muted-foreground: #404040;
+  --primary: #725627;
+  --border: #a5a09a;
+}

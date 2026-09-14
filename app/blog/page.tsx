@@ -8,7 +8,7 @@ import type { Metadata } from "next"
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: "RF Connector Industry Blog & Insights | Baierde Electronic",
+  title: "RF Connector Industry Blog & Insights",
   description:
     "Expert insights on RF connectors, 5G technology, industry standards, and connectivity solutions. Technical articles and application guides.",
   alternates: {
