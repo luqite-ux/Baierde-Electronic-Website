@@ -35,7 +35,7 @@ export function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Delivering precision-engineered RF coaxial connectors, adapters, and cable assemblies worldwide.
             </p>
-            <div className="mt-5 flex flex-wrap gap-2" aria-label="Baierde Electronic social media">
+            <div className="mt-5 grid w-fit grid-cols-6 gap-2" aria-label="Baierde Electronic social media">
               {SOCIAL_LINKS.map((social) => {
                 const Icon = socialIcons[social.icon]
                 return (
