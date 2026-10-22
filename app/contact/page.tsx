@@ -5,6 +5,7 @@ import { RFQForm } from "@/components/rfq-form"
 import { Mail, Phone, MapPin, Clock, CheckCircle2, Download, MessageCircle } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
+import { SOCIAL_PROFILE_URLS } from "@/lib/social-links"
 
 export const metadata: Metadata = {
   title: "Contact Us & Request Quote | Baierde Electronic",
@@ -38,11 +39,7 @@ const organizationSchema = {
       availableLanguage: ["English", "Chinese"],
     },
   ],
-  sameAs: [
-    "https://linkedin.com/company/baierde-electronic",
-    "https://twitter.com/baierde",
-    "https://facebook.com/baierde",
-  ],
+  sameAs: SOCIAL_PROFILE_URLS,
 }
 
 export default function ContactPage() {

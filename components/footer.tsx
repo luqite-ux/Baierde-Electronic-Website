@@ -1,6 +1,16 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Music2, Phone, X, Youtube } from "lucide-react"
+import { SOCIAL_LINKS } from "@/lib/social-links"
+
+const socialIcons = {
+  facebook: Facebook,
+  instagram: Instagram,
+  youtube: Youtube,
+  tiktok: Music2,
+  linkedin: Linkedin,
+  x: X,
+}
 
 export function Footer() {
   const footerCompanyName = 'Zhenjiang Baierde Electronic Co., Ltd.'.replace(/[.\s]+$/, '')
@@ -25,6 +35,24 @@ export function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Delivering precision-engineered RF coaxial connectors, adapters, and cable assemblies worldwide.
             </p>
+            <div className="mt-5 flex flex-wrap gap-2" aria-label="Baierde Electronic social media">
+              {SOCIAL_LINKS.map((social) => {
+                const Icon = socialIcons[social.icon]
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit Baierde Electronic on ${social.label}`}
+                    title={social.label}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  >
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </a>
+                )
+              })}
+            </div>
           </div>
 
           <div>

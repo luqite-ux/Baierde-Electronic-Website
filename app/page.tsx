@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Factory, Users, Clock, Wrench, FlaskConical, Download, ArrowRight, CheckCircle } from "lucide-react"
 import type { Metadata } from "next"
 import { getCategories, getCatalogFile } from "@/lib/sanity.data"
+import { SOCIAL_PROFILE_URLS } from "@/lib/social-links"
 
 export const metadata: Metadata = {
   title: "RF Coaxial Connectors & Cable Assemblies Manufacturer | IEC Certified | Baierde Electronic",
@@ -96,10 +97,7 @@ export default async function HomePage() {
               addressRegion: "Jiangsu",
               addressCountry: "CN",
             },
-            sameAs: [
-              "https://www.linkedin.com/company/baierde-electronic",
-              "https://www.facebook.com/baierdeelectronic",
-            ],
+            sameAs: SOCIAL_PROFILE_URLS,
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: "4.8",
