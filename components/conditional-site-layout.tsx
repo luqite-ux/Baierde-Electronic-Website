@@ -5,6 +5,7 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { StickyRFQ } from '@/components/sticky-rfq'
 import type { PopularSeriesItem } from '@/lib/sanity.data'
+import type { ContentModules } from '@/lib/site-content/reader'
 
 /**
  * 站点布局：/studio 下不渲染 Header/Footer/main，避免破坏 Sanity Studio 的 theme 上下文。
@@ -13,9 +14,11 @@ import type { PopularSeriesItem } from '@/lib/sanity.data'
 export function ConditionalSiteLayout({
   children,
   popularSeries = [],
+  contentModules = [],
 }: {
   children: React.ReactNode
   popularSeries?: PopularSeriesItem[]
+  contentModules?: ContentModules
 }) {
   const pathname = usePathname()
   const isStudio = pathname?.startsWith('/studio')
@@ -26,7 +29,7 @@ export function ConditionalSiteLayout({
 
   return (
     <>
-      <Header popularSeries={popularSeries} />
+      <Header popularSeries={popularSeries} contentModules={contentModules} />
       <main className="min-h-screen">{children}</main>
       <Footer />
       <StickyRFQ />

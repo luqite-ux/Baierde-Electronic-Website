@@ -1,0 +1,18 @@
+{
+  "domain": "www.brdelectronic.com",
+  "adapterVersion": "1",
+  "capabilities": [
+    "preview"
+  ],
+  "modules": [
+    "home.navigation",
+    "home.hero",
+    "home.trust",
+    "home.products",
+    "home.industries",
+    "home.manufacturing",
+    "home.faq",
+    "home.cta",
+    "home.seo"
+  ]
+}

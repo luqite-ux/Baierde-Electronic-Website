@@ -2,6 +2,7 @@ import { NextResponse as ServiceGuardNextResponse, type NextRequest as ServiceGu
 import { isServiceGuardExcludedPath, isWebsiteServiceAvailable } from './lib/service-status'
 import { NextResponse, type NextRequest } from 'next/server'
 import { SESSION_COOKIE } from '@/lib/admin-session'
+import { protectPreviewResponse } from './lib/site-content/preview-protection'
 
 function existingServiceExpiryIntegration(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -23,6 +24,9 @@ function existingServiceExpiryIntegration(request: NextRequest) {
 export const config = { matcher: ['/((?!_next/static|_next/image).*)'] }
 
 export async function middleware(request: ServiceGuardRequest) {
-  if (!isServiceGuardExcludedPath(request.nextUrl.pathname) && !await isWebsiteServiceAvailable()) return ServiceGuardNextResponse.rewrite(new URL('/service-expired', request.url))
-  return existingServiceExpiryIntegration(request)
+  const response = !isServiceGuardExcludedPath(request.nextUrl.pathname) && !await isWebsiteServiceAvailable()
+    ? ServiceGuardNextResponse.rewrite(new URL('/service-expired', request.url))
+    : existingServiceExpiryIntegration(request)
+  protectPreviewResponse(response.headers, request.cookies.has('__Host-hq-site-preview'))
+  return response
 }

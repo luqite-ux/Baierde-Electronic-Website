@@ -1,5 +1,6 @@
 "use client"
 
+import { contentReader, type ContentModules } from "@/lib/site-content/reader"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, Search, X, ChevronDown } from "lucide-react"
@@ -7,7 +8,8 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import type { PopularSeriesItem } from "@/lib/sanity.data"
 
-export function Header({ popularSeries = [] }: { popularSeries?: PopularSeriesItem[] }) {
+export function Header({ popularSeries = [], contentModules = [] }: { popularSeries?: PopularSeriesItem[]; contentModules?: ContentModules }) {
+  const copy = contentReader(contentModules)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [productsOpen, setProductsOpen] = useState(false)
   const [solutionsOpen, setSolutionsOpen] = useState(false)
@@ -21,33 +23,22 @@ export function Header({ popularSeries = [] }: { popularSeries?: PopularSeriesIt
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 lg:flex">
-          <Link href="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-            Home
-          </Link>
+          <Link href={copy.href("home","/")} className="hq-typography text-sm font-medium text-foreground hover:text-primary transition-colors" style={copy.style("navigation", "items.home.label")}>{copy.nav("home","Home")}</Link>
 
           <div className="relative group">
-            <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Products <ChevronDown className="h-4 w-4" />
+            <button className="hq-typography flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors" style={copy.style("navigation", "items.products.label")}>{copy.nav("products","Products")}<ChevronDown className="h-4 w-4" />
             </button>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
               <div className="bg-background border border-border rounded-lg shadow-lg p-4 w-64">
-                <Link href="/products" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  All Products
-                </Link>
+                <Link href={copy.href("all-products","/products")} className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md" style={copy.style("navigation", "subitems.all-products.label")}>{copy.nav("all-products","All Products")}</Link>
                 <div className="border-t border-border my-2" />
-                <Link href="/products/connectors" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  RF Coaxial Connectors
-                </Link>
-                <Link href="/products/adapters" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  RF Adapters
-                </Link>
-                <Link href="/products/cable-assemblies" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  RF Cable Assemblies
-                </Link>
+                <Link href={copy.href("rf-coaxial-connectors","/products/connectors")} className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md" style={copy.style("navigation", "subitems.rf-coaxial-connectors.label")}>{copy.nav("rf-coaxial-connectors","RF Coaxial Connectors")}</Link>
+                <Link href={copy.href("rf-adapters","/products/adapters")} className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md" style={copy.style("navigation", "subitems.rf-adapters.label")}>{copy.nav("rf-adapters","RF Adapters")}</Link>
+                <Link href={copy.href("rf-cable-assemblies","/products/cable-assemblies")} className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md" style={copy.style("navigation", "subitems.rf-cable-assemblies.label")}>{copy.nav("rf-cable-assemblies","RF Cable Assemblies")}</Link>
                 {popularSeries.length > 0 && (
                   <>
                     <div className="border-t border-border my-2" />
-                    <div className="px-3 py-1 text-xs text-muted-foreground font-semibold">Popular Series</div>
+                    <div className="hq-typography px-3 py-1 text-xs text-muted-foreground font-semibold" style={copy.style("navigation", "captions.popular-series.label")}>{copy.nav("popular-series","Popular Series")}</div>
                     {popularSeries.map((series) => (
                       <Link
                         key={series._id}
@@ -64,46 +55,29 @@ export function Header({ popularSeries = [] }: { popularSeries?: PopularSeriesIt
           </div>
 
           <div className="relative group">
-            <button className="flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Solutions <ChevronDown className="h-4 w-4" />
+            <button className="hq-typography flex items-center gap-1 text-sm font-medium text-foreground hover:text-primary transition-colors" style={copy.style("navigation", "items.solutions.label")}>{copy.nav("solutions","Solutions")}<ChevronDown className="h-4 w-4" />
             </button>
             <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
               <div className="bg-background border border-border rounded-lg shadow-lg p-4 w-56">
-                <Link href="/applications" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  All Applications
-                </Link>
+                <Link href={copy.href("all-applications","/applications")} className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md" style={copy.style("navigation", "subitems.all-applications.label")}>{copy.nav("all-applications","All Applications")}</Link>
                 <div className="border-t border-border my-2" />
-                <Link href="/applications/telecom-5g" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  Telecom & 5G
-                </Link>
-                <Link href="/applications/automotive" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  Automotive
-                </Link>
-                <Link href="/applications/medical" className="block px-3 py-2 text-sm hover:bg-muted rounded-md">
-                  Medical Devices
-                </Link>
+                <Link href={copy.href("telecom-5g","/applications/telecom-5g")} className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md" style={copy.style("navigation", "subitems.telecom-5g.label")}>{copy.nav("telecom-5g","Telecom & 5G")}</Link>
+                <Link href={copy.href("automotive","/applications/automotive")} className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md" style={copy.style("navigation", "subitems.automotive.label")}>{copy.nav("automotive","Automotive")}</Link>
+                <Link href={copy.href("medical-devices","/applications/medical")} className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md" style={copy.style("navigation", "subitems.medical-devices.label")}>{copy.nav("medical-devices","Medical Devices")}</Link>
                 <Link
-                  href="/applications/instrumentation"
-                  className="block px-3 py-2 text-sm hover:bg-muted rounded-md"
-                >
-                  Test & Measurement
-                </Link>
+                  href={copy.href("test-measurement","/applications/instrumentation")}
+                  className="hq-typography block px-3 py-2 text-sm hover:bg-muted rounded-md"
+                 style={copy.style("navigation", "subitems.test-measurement.label")}>{copy.nav("test-measurement","Test & Measurement")}</Link>
               </div>
             </div>
           </div>
 
           <Link
-            href="/manufacturing"
-            className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-          >
-            Manufacturing
-          </Link>
-          <Link href="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-            About
-          </Link>
-          <Link href="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-            Contact
-          </Link>
+            href={copy.href("manufacturing","/manufacturing")}
+            className="hq-typography text-sm font-medium text-foreground hover:text-primary transition-colors"
+           style={copy.style("navigation", "items.manufacturing.label")}>{copy.nav("manufacturing","Manufacturing")}</Link>
+          <Link href={copy.href("about","/about")} className="hq-typography text-sm font-medium text-foreground hover:text-primary transition-colors" style={copy.style("navigation", "items.about.label")}>{copy.nav("about","About")}</Link>
+          <Link href={copy.href("contact","/contact")} className="hq-typography text-sm font-medium text-foreground hover:text-primary transition-colors" style={copy.style("navigation", "items.contact.label")}>{copy.nav("contact","Contact")}</Link>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -114,7 +88,7 @@ export function Header({ popularSeries = [] }: { popularSeries?: PopularSeriesIt
           </Button>
 
           <Button asChild className="hidden md:flex bg-primary text-foreground hover:bg-primary-dark">
-            <Link href="/contact">Request Quote</Link>
+            <Link href={copy.href("request-quote","/contact")} style={copy.style("navigation", "items.request-quote.label")} className="hq-typography">{copy.nav("request-quote","Request Quote")}</Link>
           </Button>
 
           <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -127,35 +101,24 @@ export function Header({ popularSeries = [] }: { popularSeries?: PopularSeriesIt
       {mobileMenuOpen && (
         <div className="border-t border-border bg-background lg:hidden">
           <nav className="container mx-auto flex flex-col gap-4 p-4">
-            <Link href="/" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Home
-            </Link>
+            <Link href={copy.href("home","/")} className="hq-typography text-sm font-medium" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "items.home.label")}>{copy.nav("home","Home")}</Link>
 
             <div>
               <button
-                className="flex w-full items-center justify-between text-sm font-medium"
+                className="hq-typography flex w-full items-center justify-between text-sm font-medium"
                 onClick={() => setProductsOpen(!productsOpen)}
-              >
-                Products <ChevronDown className={`h-4 w-4 transition-transform ${productsOpen ? "rotate-180" : ""}`} />
+               style={copy.style("navigation", "items.products.label")}>{copy.nav("products","Products")}<ChevronDown className={`h-4 w-4 transition-transform ${productsOpen ? "rotate-180" : ""}`} />
               </button>
               {productsOpen && (
                 <div className="ml-4 mt-2 flex flex-col gap-2">
-                  <Link href="/products" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
-                    All Products
-                  </Link>
-                  <Link href="/products/connectors" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
-                    RF Coaxial Connectors
-                  </Link>
-                  <Link href="/products/adapters" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
-                    RF Adapters
-                  </Link>
-                  <Link href="/products/cable-assemblies" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
-                    RF Cable Assemblies
-                  </Link>
+                  <Link href={copy.href("all-products","/products")} className="hq-typography text-sm" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "subitems.all-products.label")}>{copy.nav("all-products","All Products")}</Link>
+                  <Link href={copy.href("rf-coaxial-connectors","/products/connectors")} className="hq-typography text-sm" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "subitems.rf-coaxial-connectors.label")}>{copy.nav("rf-coaxial-connectors","RF Coaxial Connectors")}</Link>
+                  <Link href={copy.href("rf-adapters","/products/adapters")} className="hq-typography text-sm" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "subitems.rf-adapters.label")}>{copy.nav("rf-adapters","RF Adapters")}</Link>
+                  <Link href={copy.href("rf-cable-assemblies","/products/cable-assemblies")} className="hq-typography text-sm" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "subitems.rf-cable-assemblies.label")}>{copy.nav("rf-cable-assemblies","RF Cable Assemblies")}</Link>
                   {popularSeries.length > 0 && (
                     <>
                       <div className="border-t border-border my-2 pt-2 mt-2">
-                        <div className="text-xs text-muted-foreground font-semibold mb-2">Popular Series</div>
+                        <div className="hq-typography text-xs text-muted-foreground font-semibold mb-2" style={copy.style("navigation", "captions.popular-series.label")}>{copy.nav("popular-series","Popular Series")}</div>
                         {popularSeries.map((series) => (
                           <Link
                             key={series._id}
@@ -175,51 +138,32 @@ export function Header({ popularSeries = [] }: { popularSeries?: PopularSeriesIt
 
             <div>
               <button
-                className="flex w-full items-center justify-between text-sm font-medium"
+                className="hq-typography flex w-full items-center justify-between text-sm font-medium"
                 onClick={() => setSolutionsOpen(!solutionsOpen)}
-              >
-                Solutions{" "}
+               style={copy.style("navigation", "items.solutions.label")}>{copy.nav("solutions","Solutions")}{" "}
                 <ChevronDown className={`h-4 w-4 transition-transform ${solutionsOpen ? "rotate-180" : ""}`} />
               </button>
               {solutionsOpen && (
                 <div className="ml-4 mt-2 flex flex-col gap-2">
-                  <Link href="/applications" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
-                    All Applications
-                  </Link>
-                  <Link href="/applications/telecom-5g" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
-                    Telecom & 5G
-                  </Link>
-                  <Link href="/applications/automotive" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
-                    Automotive
-                  </Link>
-                  <Link href="/applications/medical" className="text-sm" onClick={() => setMobileMenuOpen(false)}>
-                    Medical Devices
-                  </Link>
+                  <Link href={copy.href("all-applications","/applications")} className="hq-typography text-sm" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "subitems.all-applications.label")}>{copy.nav("all-applications","All Applications")}</Link>
+                  <Link href={copy.href("telecom-5g","/applications/telecom-5g")} className="hq-typography text-sm" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "subitems.telecom-5g.label")}>{copy.nav("telecom-5g","Telecom & 5G")}</Link>
+                  <Link href={copy.href("automotive","/applications/automotive")} className="hq-typography text-sm" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "subitems.automotive.label")}>{copy.nav("automotive","Automotive")}</Link>
+                  <Link href={copy.href("medical-devices","/applications/medical")} className="hq-typography text-sm" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "subitems.medical-devices.label")}>{copy.nav("medical-devices","Medical Devices")}</Link>
                   <Link
-                    href="/applications/instrumentation"
-                    className="text-sm"
+                    href={copy.href("test-measurement","/applications/instrumentation")}
+                    className="hq-typography text-sm"
                     onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Test & Measurement
-                  </Link>
+                   style={copy.style("navigation", "subitems.test-measurement.label")}>{copy.nav("test-measurement","Test & Measurement")}</Link>
                 </div>
               )}
             </div>
 
-            <Link href="/manufacturing" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Manufacturing
-            </Link>
-            <Link href="/about" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              About
-            </Link>
-            <Link href="/contact" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Contact
-            </Link>
-            <Link href="/search" className="text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
-              Search
-            </Link>
+            <Link href={copy.href("manufacturing","/manufacturing")} className="hq-typography text-sm font-medium" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "items.manufacturing.label")}>{copy.nav("manufacturing","Manufacturing")}</Link>
+            <Link href={copy.href("about","/about")} className="hq-typography text-sm font-medium" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "items.about.label")}>{copy.nav("about","About")}</Link>
+            <Link href={copy.href("contact","/contact")} className="hq-typography text-sm font-medium" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "items.contact.label")}>{copy.nav("contact","Contact")}</Link>
+            <Link href={copy.href("search","/search")} className="hq-typography text-sm font-medium" onClick={() => setMobileMenuOpen(false)} style={copy.style("navigation", "items.search.label")}>{copy.nav("search","Search")}</Link>
             <Button asChild className="bg-primary text-foreground hover:bg-primary-dark">
-              <Link href="/contact">Request Quote</Link>
+              <Link href={copy.href("request-quote","/contact")} style={copy.style("navigation", "items.request-quote.label")} className="hq-typography">{copy.nav("request-quote","Request Quote")}</Link>
             </Button>
           </nav>
         </div>

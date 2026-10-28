@@ -1,0 +1,424 @@
+{
+  "pages": {
+    "home": {
+      "order": [
+        "navigation",
+        "hero",
+        "trust",
+        "products",
+        "industries",
+        "manufacturing",
+        "faq",
+        "cta",
+        "seo"
+      ],
+      "modules": {
+        "hero": {
+          "hidden": false,
+          "values": {
+            "text01": {
+              "en": "RF Coaxial Connectors & Cable Assemblies Manufacturer"
+            },
+            "text02": {
+              "en": "IEC/GB certified precision RF connectors for global markets. Trusted by 50+ countries since 2006."
+            },
+            "text03": {
+              "en": "Fast RFQ response within 24 hours. OEM/ODM customization available."
+            },
+            "text04": {
+              "en": "Request a Quote"
+            },
+            "text05": {
+              "en": "Download Catalog"
+            },
+            "text06": {
+              "en": "Catalog not available yet."
+            },
+            "text07": {
+              "en": "IEC/GB Standards"
+            },
+            "text08": {
+              "en": "Full compliance"
+            },
+            "text09": {
+              "en": "In-house CNC"
+            },
+            "text10": {
+              "en": "210+ equipment"
+            },
+            "text11": {
+              "en": "QC Laboratory"
+            },
+            "text12": {
+              "en": "100% tested"
+            },
+            "text13": {
+              "en": "OEM/ODM"
+            },
+            "text14": {
+              "en": "Custom solutions"
+            },
+            "text15": {
+              "en": "Fast Lead Time"
+            },
+            "text16": {
+              "en": "2-3 weeks"
+            },
+            "text17": {
+              "en": "150+ Employees"
+            },
+            "text18": {
+              "en": "Expert team"
+            }
+          }
+        },
+        "trust": {
+          "hidden": false,
+          "values": {
+            "text01": {
+              "en": "2006"
+            },
+            "text02": {
+              "en": "Founded"
+            },
+            "text03": {
+              "en": "150+"
+            },
+            "text04": {
+              "en": "Employees"
+            },
+            "text05": {
+              "en": "210+"
+            },
+            "text06": {
+              "en": "Equipment Sets"
+            },
+            "text07": {
+              "en": "Strict QC"
+            },
+            "text08": {
+              "en": "100% Tested"
+            }
+          }
+        },
+        "products": {
+          "hidden": false,
+          "values": {
+            "text01": {
+              "en": "Our Product Range"
+            },
+            "text02": {
+              "en": "Comprehensive RF connectivity solutions for telecommunications, automotive, medical, and industrial applications"
+            },
+            "text03": {
+              "en": "Popular Series"
+            },
+            "text04": {
+              "en": "SMA Connectors"
+            },
+            "text05": {
+              "en": "MMCX Connectors"
+            },
+            "text06": {
+              "en": "MCX Connectors"
+            },
+            "text07": {
+              "en": "SMP Connectors"
+            },
+            "text08": {
+              "en": "BNC Connectors"
+            }
+          }
+        },
+        "industries": {
+          "hidden": false,
+          "values": {
+            "text01": {
+              "en": "Industries We Serve"
+            },
+            "text02": {
+              "en": "Trusted RF connectivity solutions across diverse industries worldwide"
+            },
+            "text03": {
+              "en": "Telecom & 5G"
+            },
+            "text04": {
+              "en": "Base stations, antennas, network infrastructure"
+            },
+            "text05": {
+              "en": "Automotive"
+            },
+            "text06": {
+              "en": "GPS, infotainment, ADAS, vehicle connectivity"
+            },
+            "text07": {
+              "en": "Medical Devices"
+            },
+            "text08": {
+              "en": "Diagnostic equipment, patient monitoring systems"
+            },
+            "text09": {
+              "en": "Test & Measurement"
+            },
+            "text10": {
+              "en": "Oscilloscopes, analyzers, laboratory equipment"
+            }
+          }
+        },
+        "manufacturing": {
+          "hidden": false,
+          "values": {
+            "text01": {
+              "en": "Advanced Manufacturing & Quality Control"
+            },
+            "text02": {
+              "en": "Our 5,000m² facility houses 210+ precision CNC machines and automated production lines. Every connector undergoes rigorous testing in our IEC-compliant QC laboratory."
+            },
+            "text03": {
+              "en": "In-house CNC machining and precision tooling"
+            },
+            "text04": {
+              "en": "Network analyzers, salt spray, durability testing"
+            },
+            "text05": {
+              "en": "100% electrical and mechanical inspection"
+            },
+            "text06": {
+              "en": "IEC 61169 and GB standards compliance"
+            },
+            "text07": {
+              "en": "View Manufacturing Process"
+            },
+            "text08": {
+              "en": "Quality Assurance Details"
+            }
+          }
+        },
+        "faq": {
+          "hidden": false,
+          "values": {
+            "text01": {
+              "en": "Frequently Asked Questions"
+            },
+            "text02": {
+              "en": "Common questions about our RF connectors, manufacturing, and services"
+            },
+            "text03": {
+              "en": "Have more questions?"
+            },
+            "text04": {
+              "en": "Contact Our Team"
+            },
+            "question1": {
+              "en": "What types of RF connectors do you manufacture?"
+            },
+            "answer1": {
+              "en": "We manufacture a comprehensive range of RF coaxial connectors including SMA, MMCX, MCX, BNC, TNC, SMP, N-Type, and custom OEM/ODM designs. Our connectors support frequencies from DC to 40GHz for telecom, automotive, medical, and industrial applications."
+            },
+            "question2": {
+              "en": "What is your minimum order quantity (MOQ)?"
+            },
+            "answer2": {
+              "en": "Our MOQ varies by product type and customization level. For standard connectors, we can accommodate orders from 100 pieces. For custom OEM/ODM projects, MOQ depends on tooling requirements. Contact us to discuss your specific needs."
+            },
+            "question3": {
+              "en": "What is your typical lead time for orders?"
+            },
+            "answer3": {
+              "en": "Standard catalog products ship within 2-3 weeks from order confirmation. Custom cable assemblies typically require 3-4 weeks. OEM/ODM projects range from 4-6 weeks depending on complexity. We offer expedited service for urgent requirements."
+            },
+            "question4": {
+              "en": "Do you provide free samples?"
+            },
+            "answer4": {
+              "en": "Yes, we provide free samples for evaluation purposes. Customers only need to cover shipping costs. Sample requests are typically processed within 3-5 business days. Contact us with your specific connector requirements."
+            },
+            "question5": {
+              "en": "What quality certifications do your products have?"
+            },
+            "answer5": {
+              "en": "All products are manufactured to IEC 61169 and GB standards. We maintain a comprehensive QC laboratory with network analyzers, salt spray chambers, and durability testers. Every connector undergoes 100% electrical and mechanical testing before shipment."
+            },
+            "question6": {
+              "en": "Do you offer customization and OEM/ODM services?"
+            },
+            "answer6": {
+              "en": "Yes, we specialize in custom RF solutions. Our engineering team can develop connectors to your exact specifications including custom dimensions, plating options, impedance values, and packaging. We have extensive OEM/ODM experience with international clients."
+            },
+            "question7": {
+              "en": "What shipping methods do you use for international orders?"
+            },
+            "answer7": {
+              "en": "We ship worldwide via DHL, FedEx, UPS, and TNT for express delivery (5-7 days). Sea freight is available for large orders. All products are carefully packaged to ensure safe arrival. We handle export documentation and customs clearance."
+            }
+          }
+        },
+        "cta": {
+          "hidden": false,
+          "values": {
+            "text01": {
+              "en": "Ready to Start Your Project?"
+            },
+            "text02": {
+              "en": "Get a free quote within 24 hours. Our engineering team is ready to discuss your RF connector requirements."
+            },
+            "text03": {
+              "en": "Request a Quote"
+            },
+            "text04": {
+              "en": "Browse All Products"
+            }
+          }
+        },
+        "navigation": {
+          "hidden": false,
+          "values": {
+            "items": [
+              {
+                "id": "home",
+                "label": {
+                  "en": "Home"
+                },
+                "href": "/"
+              },
+              {
+                "id": "products",
+                "label": {
+                  "en": "Products"
+                },
+                "href": "/"
+              },
+              {
+                "id": "solutions",
+                "label": {
+                  "en": "Solutions"
+                },
+                "href": "/"
+              },
+              {
+                "id": "manufacturing",
+                "label": {
+                  "en": "Manufacturing"
+                },
+                "href": "/manufacturing"
+              },
+              {
+                "id": "about",
+                "label": {
+                  "en": "About"
+                },
+                "href": "/about"
+              },
+              {
+                "id": "contact",
+                "label": {
+                  "en": "Contact"
+                },
+                "href": "/contact"
+              },
+              {
+                "id": "request-quote",
+                "label": {
+                  "en": "Request Quote"
+                },
+                "href": "/contact"
+              },
+              {
+                "id": "search",
+                "label": {
+                  "en": "Search"
+                },
+                "href": "/search"
+              }
+            ],
+            "subitems": [
+              {
+                "id": "all-products",
+                "label": {
+                  "en": "All Products"
+                },
+                "href": "/products"
+              },
+              {
+                "id": "rf-coaxial-connectors",
+                "label": {
+                  "en": "RF Coaxial Connectors"
+                },
+                "href": "/products/connectors"
+              },
+              {
+                "id": "rf-adapters",
+                "label": {
+                  "en": "RF Adapters"
+                },
+                "href": "/products/adapters"
+              },
+              {
+                "id": "rf-cable-assemblies",
+                "label": {
+                  "en": "RF Cable Assemblies"
+                },
+                "href": "/products/cable-assemblies"
+              },
+              {
+                "id": "all-applications",
+                "label": {
+                  "en": "All Applications"
+                },
+                "href": "/applications"
+              },
+              {
+                "id": "telecom-5g",
+                "label": {
+                  "en": "Telecom & 5G"
+                },
+                "href": "/applications/telecom-5g"
+              },
+              {
+                "id": "automotive",
+                "label": {
+                  "en": "Automotive"
+                },
+                "href": "/applications/automotive"
+              },
+              {
+                "id": "medical-devices",
+                "label": {
+                  "en": "Medical Devices"
+                },
+                "href": "/applications/medical"
+              },
+              {
+                "id": "test-measurement",
+                "label": {
+                  "en": "Test & Measurement"
+                },
+                "href": "/applications/instrumentation"
+              }
+            ],
+            "captions": [
+              {
+                "id": "popular-series",
+                "label": {
+                  "en": "Popular Series"
+                },
+                "href": "/"
+              }
+            ]
+          }
+        },
+        "seo": {
+          "hidden": false,
+          "values": {
+            "title": {
+              "en": "RF Coaxial Connectors & Cable Assemblies Manufacturer | IEC Certified | Baierde Electronic"
+            },
+            "description": {
+              "en": "Leading RF coaxial connector manufacturer since 2006. IEC/GB certified quality, in-house CNC machining, OEM/ODM services. SMA, MMCX, MCX, BNC connectors. Fast quote response in 24h."
+            }
+          }
+        }
+      }
+    }
+  }
+}

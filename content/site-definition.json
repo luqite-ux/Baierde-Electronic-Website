@@ -1,0 +1,2389 @@
+{
+  "version": 1,
+  "fontFamilies": [
+    {
+      "key": "site-sans",
+      "label": "网站默认字体"
+    }
+  ],
+  "pages": [
+    {
+      "key": "home",
+      "path": "/",
+      "label": "首页",
+      "modules": [
+        {
+          "key": "navigation",
+          "type": "navigation",
+          "label": "导航文字与链接",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "items",
+              "type": "repeat",
+              "label": "导航项（固定位置）",
+              "maxItems": 30,
+              "fields": [
+                {
+                  "key": "label",
+                  "type": "text",
+                  "label": "文字",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 100,
+                  "typography": {
+                    "fontFamilies": [
+                      "site-sans"
+                    ],
+                    "fontWeights": [
+                      400,
+                      500,
+                      600,
+                      700
+                    ],
+                    "fontSize": {
+                      "min": 10,
+                      "max": 96
+                    },
+                    "defaults": {
+                      "fontFamily": "site-sans",
+                      "fontWeight": 500,
+                      "fontSizeDesktop": 14,
+                      "fontSizeMobile": 14
+                    }
+                  }
+                },
+                {
+                  "key": "href",
+                  "type": "link",
+                  "label": "链接",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "key": "subitems",
+              "type": "repeat",
+              "label": "下拉导航",
+              "maxItems": 30,
+              "fields": [
+                {
+                  "key": "label",
+                  "type": "text",
+                  "label": "文字",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 100,
+                  "typography": {
+                    "fontFamilies": [
+                      "site-sans"
+                    ],
+                    "fontWeights": [
+                      400,
+                      500,
+                      600,
+                      700
+                    ],
+                    "fontSize": {
+                      "min": 10,
+                      "max": 96
+                    },
+                    "defaults": {
+                      "fontFamily": "site-sans",
+                      "fontWeight": 400,
+                      "fontSizeDesktop": 14,
+                      "fontSizeMobile": 14
+                    }
+                  }
+                },
+                {
+                  "key": "href",
+                  "type": "link",
+                  "label": "链接",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "key": "captions",
+              "type": "repeat",
+              "label": "分组标题",
+              "maxItems": 30,
+              "fields": [
+                {
+                  "key": "label",
+                  "type": "text",
+                  "label": "文字",
+                  "localized": true,
+                  "required": true,
+                  "maxLength": 100,
+                  "typography": {
+                    "fontFamilies": [
+                      "site-sans"
+                    ],
+                    "fontWeights": [
+                      400,
+                      500,
+                      600,
+                      700
+                    ],
+                    "fontSize": {
+                      "min": 10,
+                      "max": 96
+                    },
+                    "defaults": {
+                      "fontFamily": "site-sans",
+                      "fontWeight": 600,
+                      "fontSizeDesktop": 12,
+                      "fontSizeMobile": 12
+                    }
+                  }
+                },
+                {
+                  "key": "href",
+                  "type": "link",
+                  "label": "链接",
+                  "required": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "hero",
+          "type": "hero",
+          "label": "首屏",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "text01",
+              "type": "text",
+              "label": "RF Coaxial Connectors & Cable Assemblies Manufacturer",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 48,
+                  "fontSizeMobile": 36
+                }
+              }
+            },
+            {
+              "key": "text02",
+              "type": "text",
+              "label": "IEC/GB certified precision RF connectors for global markets. Trus",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 20,
+                  "fontSizeMobile": 20
+                }
+              }
+            },
+            {
+              "key": "text03",
+              "type": "text",
+              "label": "Fast RFQ response within 24 hours. OEM/ODM customization availabl",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text04",
+              "type": "text",
+              "label": "Request a Quote",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text05",
+              "type": "text",
+              "label": "Download Catalog",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text06",
+              "type": "text",
+              "label": "Catalog not available yet.",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text07",
+              "type": "text",
+              "label": "IEC/GB Standards",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text08",
+              "type": "text",
+              "label": "Full compliance",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 12,
+                  "fontSizeMobile": 12
+                }
+              }
+            },
+            {
+              "key": "text09",
+              "type": "text",
+              "label": "In-house CNC",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text10",
+              "type": "text",
+              "label": "210+ equipment",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 12,
+                  "fontSizeMobile": 12
+                }
+              }
+            },
+            {
+              "key": "text11",
+              "type": "text",
+              "label": "QC Laboratory",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text12",
+              "type": "text",
+              "label": "100% tested",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 12,
+                  "fontSizeMobile": 12
+                }
+              }
+            },
+            {
+              "key": "text13",
+              "type": "text",
+              "label": "OEM/ODM",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text14",
+              "type": "text",
+              "label": "Custom solutions",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 12,
+                  "fontSizeMobile": 12
+                }
+              }
+            },
+            {
+              "key": "text15",
+              "type": "text",
+              "label": "Fast Lead Time",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text16",
+              "type": "text",
+              "label": "2-3 weeks",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 12,
+                  "fontSizeMobile": 12
+                }
+              }
+            },
+            {
+              "key": "text17",
+              "type": "text",
+              "label": "150+ Employees",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text18",
+              "type": "text",
+              "label": "Expert team",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 12,
+                  "fontSizeMobile": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "trust",
+          "type": "text",
+          "label": "实力数据",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "text01",
+              "type": "text",
+              "label": "2006",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text02",
+              "type": "text",
+              "label": "Founded",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text03",
+              "type": "text",
+              "label": "150+",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text04",
+              "type": "text",
+              "label": "Employees",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text05",
+              "type": "text",
+              "label": "210+",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text06",
+              "type": "text",
+              "label": "Equipment Sets",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text07",
+              "type": "text",
+              "label": "Strict QC",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text08",
+              "type": "text",
+              "label": "100% Tested",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "products",
+          "type": "text",
+          "label": "产品分类引导",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "text01",
+              "type": "text",
+              "label": "Our Product Range",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text02",
+              "type": "text",
+              "label": "Comprehensive RF connectivity solutions for telecommunications, a",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text03",
+              "type": "text",
+              "label": "Popular Series",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text04",
+              "type": "text",
+              "label": "SMA Connectors",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text05",
+              "type": "text",
+              "label": "MMCX Connectors",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text06",
+              "type": "text",
+              "label": "MCX Connectors",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text07",
+              "type": "text",
+              "label": "SMP Connectors",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text08",
+              "type": "text",
+              "label": "BNC Connectors",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "industries",
+          "type": "text",
+          "label": "应用行业",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "text01",
+              "type": "text",
+              "label": "Industries We Serve",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text02",
+              "type": "text",
+              "label": "Trusted RF connectivity solutions across diverse industries world",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text03",
+              "type": "text",
+              "label": "Telecom & 5G",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text04",
+              "type": "text",
+              "label": "Base stations, antennas, network infrastructure",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text05",
+              "type": "text",
+              "label": "Automotive",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text06",
+              "type": "text",
+              "label": "GPS, infotainment, ADAS, vehicle connectivity",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text07",
+              "type": "text",
+              "label": "Medical Devices",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text08",
+              "type": "text",
+              "label": "Diagnostic equipment, patient monitoring systems",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text09",
+              "type": "text",
+              "label": "Test & Measurement",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text10",
+              "type": "text",
+              "label": "Oscilloscopes, analyzers, laboratory equipment",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "manufacturing",
+          "type": "text",
+          "label": "制造与质量",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "text01",
+              "type": "text",
+              "label": "Advanced Manufacturing & Quality Control",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text02",
+              "type": "textarea",
+              "label": "Our 5,000m² facility houses 210+ precision CNC machines and autom",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text03",
+              "type": "text",
+              "label": "In-house CNC machining and precision tooling",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text04",
+              "type": "text",
+              "label": "Network analyzers, salt spray, durability testing",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text05",
+              "type": "text",
+              "label": "100% electrical and mechanical inspection",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text06",
+              "type": "text",
+              "label": "IEC 61169 and GB standards compliance",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text07",
+              "type": "text",
+              "label": "View Manufacturing Process",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text08",
+              "type": "text",
+              "label": "Quality Assurance Details",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "faq",
+          "type": "text",
+          "label": "常见问题",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "text01",
+              "type": "text",
+              "label": "Frequently Asked Questions",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text02",
+              "type": "text",
+              "label": "Common questions about our RF connectors, manufacturing, and serv",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text03",
+              "type": "text",
+              "label": "Have more questions?",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "text04",
+              "type": "text",
+              "label": "Contact Our Team",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "question1",
+              "type": "text",
+              "label": "FAQ 1 question",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "answer1",
+              "type": "textarea",
+              "label": "FAQ 1 answer",
+              "localized": true,
+              "required": true,
+              "maxLength": 759,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "question2",
+              "type": "text",
+              "label": "FAQ 2 question",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "answer2",
+              "type": "textarea",
+              "label": "FAQ 2 answer",
+              "localized": true,
+              "required": true,
+              "maxLength": 696,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "question3",
+              "type": "text",
+              "label": "FAQ 3 question",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "answer3",
+              "type": "textarea",
+              "label": "FAQ 3 answer",
+              "localized": true,
+              "required": true,
+              "maxLength": 720,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "question4",
+              "type": "text",
+              "label": "FAQ 4 question",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "answer4",
+              "type": "textarea",
+              "label": "FAQ 4 answer",
+              "localized": true,
+              "required": true,
+              "maxLength": 654,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "question5",
+              "type": "text",
+              "label": "FAQ 5 question",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "answer5",
+              "type": "textarea",
+              "label": "FAQ 5 answer",
+              "localized": true,
+              "required": true,
+              "maxLength": 759,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "question6",
+              "type": "text",
+              "label": "FAQ 6 question",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "answer6",
+              "type": "textarea",
+              "label": "FAQ 6 answer",
+              "localized": true,
+              "required": true,
+              "maxLength": 777,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            },
+            {
+              "key": "question7",
+              "type": "text",
+              "label": "FAQ 7 question",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 600,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "answer7",
+              "type": "textarea",
+              "label": "FAQ 7 answer",
+              "localized": true,
+              "required": true,
+              "maxLength": 708,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 16,
+                  "fontSizeMobile": 16
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "cta",
+          "type": "text",
+          "label": "联系引导",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "text01",
+              "type": "text",
+              "label": "Ready to Start Your Project?",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 700,
+                  "fontSizeDesktop": 36,
+                  "fontSizeMobile": 30
+                }
+              }
+            },
+            {
+              "key": "text02",
+              "type": "text",
+              "label": "Get a free quote within 24 hours. Our engineering team is ready t",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 400,
+                  "fontSizeDesktop": 18,
+                  "fontSizeMobile": 18
+                }
+              }
+            },
+            {
+              "key": "text03",
+              "type": "text",
+              "label": "Request a Quote",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            },
+            {
+              "key": "text04",
+              "type": "text",
+              "label": "Browse All Products",
+              "localized": true,
+              "required": true,
+              "maxLength": 500,
+              "typography": {
+                "fontFamilies": [
+                  "site-sans"
+                ],
+                "fontWeights": [
+                  400,
+                  500,
+                  600,
+                  700
+                ],
+                "fontSize": {
+                  "min": 10,
+                  "max": 96
+                },
+                "defaults": {
+                  "fontFamily": "site-sans",
+                  "fontWeight": 500,
+                  "fontSizeDesktop": 14,
+                  "fontSizeMobile": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "key": "seo",
+          "type": "seo",
+          "label": "首页 SEO",
+          "canHide": false,
+          "canReorder": false,
+          "fields": [
+            {
+              "key": "title",
+              "type": "text",
+              "label": "标题",
+              "localized": true,
+              "required": true,
+              "maxLength": 200
+            },
+            {
+              "key": "description",
+              "type": "textarea",
+              "label": "描述",
+              "localized": true,
+              "maxLength": 500
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@media (max-width: 1023.98px) {
+  .hq-typography[style*="--hq-font-size-mobile:"] { font-size: var(--hq-font-size-mobile); }
+}
+@media (min-width: 1024px) {
+  .hq-typography[style*="--hq-font-size-desktop:"] { font-size: var(--hq-font-size-desktop); }
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0.005 40);
