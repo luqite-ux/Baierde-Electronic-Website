@@ -140,13 +140,17 @@ export default async function ConnectorsPage({ searchParams }: ConnectorsPagePro
                     {product.shortDescription && (
                       <p className="text-sm text-muted-foreground line-clamp-2 mb-3">{product.shortDescription}</p>
                     )}
-                    {/* 列表技术参数与详情同源：getFrequencyAndImpedanceFromDetailSpecs → getSpecsForSeries（规格书） */}
+                    {/* 优先使用产品自己的技术参数；旧产品缺少参数时才回退到系列规格。 */}
                     <div className="flex flex-wrap gap-1 mb-3">
                       {(() => {
-                        const { frequency, impedance } = getFrequencyAndImpedanceFromDetailSpecs(
+                        const fallback = getFrequencyAndImpedanceFromDetailSpecs(
                           product.seriesName ?? null,
                           product.title ?? ""
                         )
+                        const frequency = product.specs?.find((item) => /frequency/i.test(item.label))?.value
+                          ?? fallback.frequency
+                        const impedance = product.specs?.find((item) => /impedance/i.test(item.label))?.value
+                          ?? fallback.impedance
                         return (
                           <>
                             {frequency && (

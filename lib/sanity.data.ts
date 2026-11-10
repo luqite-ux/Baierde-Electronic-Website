@@ -138,6 +138,7 @@ export type ConnectorProduct = {
   seriesName: string | null
   imageUrl: string | null
   shortDescription?: string | null
+  specs?: { label: string; value: string }[] | null
   frequencyMax?: number | null
   impedance?: number | null
   mountingType?: string | null
@@ -179,7 +180,7 @@ export async function getConnectorProducts(
   filters?: ConnectorProductFilters
 ): Promise<ConnectorProduct[]> {
   const unified = await dbProducts()
-  if (unified) return unified.filter((row) => row.category === 'connectors' && (!filters?.series?.length || filters.series.some((value) => row.series?.toLowerCase().startsWith(value.toLowerCase())))).map((row) => ({_id:row._id,title:row.title,slug:row.slug,seriesName:row.series||null,imageUrl:row.images[0]||null,shortDescription:row.shortDescription}))
+  if (unified) return unified.filter((row) => row.category === 'connectors' && (!filters?.series?.length || filters.series.some((value) => row.series?.toLowerCase().startsWith(value.toLowerCase())))).map((row) => ({_id:row._id,title:row.title,slug:row.slug,seriesName:row.series||null,imageUrl:row.images[0]||null,shortDescription:row.shortDescription,specs:row.specs}))
   // Build GROQ query parameters
   const params: Record<string, unknown> = {}
   let paramIndex = 0
